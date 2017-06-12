@@ -1,0 +1,43 @@
+Vivado Simulator 2015.2
+Copyright 1986-1999, 2001-2015 Xilinx, Inc. All Rights Reserved.
+Running: F:/Xilinx/Vivado/2015.2/bin/unwrapped/win64.o/xelab.exe -wto 4d4146b3d476428f946be567bfe1eb64 --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L secureip --snapshot main_sim_func_synth xil_defaultlib.main_sim xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+WARNING: [VRFC 10-278] actual bit length 2 differs from formal bit length 3 for port weight [D:/VerilogCode/washing_machine/washing_machine.srcs/sim_1/new/main_sim.v:59]
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module unisims_ver.OBUF
+Compiling module unisims_ver.x_lut2_mux4
+Compiling module unisims_ver.LUT2
+Compiling module unisims_ver.LUT6
+Compiling module unisims_ver.x_lut1_mux2
+Compiling module unisims_ver.LUT1
+Compiling module unisims_ver.sffsrce_fdre
+Compiling module unisims_ver.FDRE
+Compiling module unisims_ver.CARRY4
+Compiling module unisims_ver.LUT5
+Compiling module unisims_ver.LUT4
+Compiling module unisims_ver.x_lut3_mux4
+Compiling module unisims_ver.x_lut3_mux4_reduced_0
+Compiling module unisims_ver.LUT3
+Compiling module xil_defaultlib.show_seg
+Compiling module xil_defaultlib.disp_num
+Compiling module xil_defaultlib.format_disp
+Compiling module unisims_ver.MUXF7
+Compiling module unisims_ver.FDRE(IS_C_INVERTED=1'b1)
+Compiling module unisims_ver.FDRE(INIT=1'b1)
+Compiling module xil_defaultlib.countdown
+Compiling module unisims_ver.BUFG
+Compiling module unisims_ver.IBUF
+Compiling module unisims_ver.FDRE(INIT=1'b1,IS_C_INVERTED=1'b...
+Compiling module xil_defaultlib.sel_mode
+Compiling module xil_defaultlib.divider
+Compiling module unisims_ver.latchsre_ldce
+Compiling module unisims_ver.LDCE
+Compiling module xil_defaultlib.main
+Compiling module xil_defaultlib.main_sim
+Compiling module xil_defaultlib.glbl
+Waiting for 2 sub-compilation(s) to finish...
+Built simulation snapshot main_sim_func_synth

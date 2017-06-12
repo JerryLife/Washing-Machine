@@ -1,0 +1,7 @@
+Vivado Simulator 2015.2
+Copyright 1986-1999, 2001-2015 Xilinx, Inc. All Rights Reserved.
+Running: F:/Xilinx/Vivado/2015.2/bin/unwrapped/win64.o/xelab.exe -wto 4d4146b3d476428f946be567bfe1eb64 --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot main_sim_behav xil_defaultlib.main_sim xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+ERROR: [VRFC 10-29] main expects 17 arguments [D:/VerilogCode/washing_machine/washing_machine.srcs/sim_1/new/main_sim.v:57]
+ERROR: [XSIM 43-3322] Static elaboration of top level Verilog design unit(s) in library work failed.

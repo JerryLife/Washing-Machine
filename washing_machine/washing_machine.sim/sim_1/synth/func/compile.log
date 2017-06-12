@@ -1,0 +1,16 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/VerilogCode/washing_machine/washing_machine.sim/sim_1/synth/func/main_sim_func_synth.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module countdown
+INFO: [VRFC 10-311] analyzing module disp_num
+INFO: [VRFC 10-311] analyzing module divider
+INFO: [VRFC 10-311] analyzing module format_disp
+INFO: [VRFC 10-311] analyzing module main
+INFO: [VRFC 10-311] analyzing module sel_mode
+INFO: [VRFC 10-311] analyzing module show_seg
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/VerilogCode/washing_machine/washing_machine.srcs/sim_1/new/countdown_sim.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module countdown_sim
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/VerilogCode/washing_machine/washing_machine.srcs/sim_1/new/main_sim.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module main_sim
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/VerilogCode/washing_machine/washing_machine.sim/sim_1/synth/func/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+WARNING: [VRFC 10-1195] overwriting previous definition of module glbl [D:/VerilogCode/washing_machine/washing_machine.sim/sim_1/synth/func/glbl.v:6]

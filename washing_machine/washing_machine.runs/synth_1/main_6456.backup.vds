@@ -1,0 +1,51 @@
+#-----------------------------------------------------------
+# Vivado v2015.2 (64-bit)
+# SW Build 1266856 on Fri Jun 26 16:35:25 MDT 2015
+# IP Build 1264090 on Wed Jun 24 14:22:01 MDT 2015
+# Start of session at: Mon Jun 12 10:51:03 2017
+# Process ID: 19452
+# Log file: D:/VerilogCode/washing_machine/washing_machine.runs/synth_1/main.vds
+# Journal file: D:/VerilogCode/washing_machine/washing_machine.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source main.tcl -notrace
+Command: synth_design -top main -part xc7a100tcsg324-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
+WARNING: [Synth 8-2611] redeclaration of ansi port mode_state is not allowed [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:58]
+WARNING: [Synth 8-2611] redeclaration of ansi port time_up is not allowed [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:70]
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:07 . Memory (MB): peak = 274.398 ; gain = 101.977
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'main' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:23]
+INFO: [Synth 8-638] synthesizing module 'divider' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/divider.v:23]
+	Parameter dely500us bound to: 50000000 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'divider' (1#1) [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/divider.v:23]
+INFO: [Synth 8-638] synthesizing module 'countdown' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/countdown.v:23]
+INFO: [Synth 8-638] synthesizing module 'format_disp' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/format_disp.v:23]
+INFO: [Synth 8-638] synthesizing module 'disp_num' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/disp_num.v:23]
+INFO: [Synth 8-638] synthesizing module 'num2seg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/num2seg.v:23]
+INFO: [Synth 8-256] done synthesizing module 'num2seg' (2#1) [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/num2seg.v:23]
+INFO: [Synth 8-638] synthesizing module 'show_seg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/show_seg.v:23]
+INFO: [Synth 8-256] done synthesizing module 'show_seg' (3#1) [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/show_seg.v:23]
+INFO: [Synth 8-256] done synthesizing module 'disp_num' (4#1) [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/disp_num.v:23]
+INFO: [Synth 8-256] done synthesizing module 'format_disp' (5#1) [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/format_disp.v:23]
+INFO: [Synth 8-256] done synthesizing module 'countdown' (6#1) [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/countdown.v:23]
+INFO: [Synth 8-638] synthesizing module 'sel_mode' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/sel_mode.v:23]
+INFO: [Synth 8-256] done synthesizing module 'sel_mode' (7#1) [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/sel_mode.v:23]
+INFO: [Synth 8-256] done synthesizing module 'main' (8#1) [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:23]
+WARNING: [Synth 8-3917] design main has port bee driven by constant 0
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:08 . Memory (MB): peak = 297.203 ; gain = 124.781
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:08 . Memory (MB): peak = 297.203 ; gain = 124.781
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7a100tcsg324-1

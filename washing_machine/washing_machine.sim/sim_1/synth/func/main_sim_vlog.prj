@@ -1,0 +1,10 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  "main_sim_func_synth.v"
+verilog xil_defaultlib  "../../../../washing_machine.srcs/sim_1/new/countdown_sim.v"
+verilog xil_defaultlib  "../../../../washing_machine.srcs/sim_1/new/main_sim.v"
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
