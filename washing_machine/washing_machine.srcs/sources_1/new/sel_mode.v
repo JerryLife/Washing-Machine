@@ -22,7 +22,7 @@
 
 module sel_mode(
 	input btn,
-	output reg [2:0] next_mode
+	output reg [3:0] next_mode
     );
 
 	initial begin

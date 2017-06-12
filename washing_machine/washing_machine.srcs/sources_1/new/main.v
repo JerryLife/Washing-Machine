@@ -41,7 +41,9 @@ module main(
 
 	//debug
 	,output [3:0] mode_state,
-	output [1:0] time_up/*,
+	output [1:0] time_up,
+	output flag,
+	output flag_reset/*,
 
 	output [3:0] work_state,
 	output hold,
@@ -71,6 +73,8 @@ module main(
 
 	reg [2:0] weight;	// the weight of clothes, also water in amount
 	reg stop;
+	reg flag_reset;
+	reg flag;
 
 	initial begin
 		bee = 0;
@@ -96,6 +100,9 @@ module main(
 		//weight of clothes
 		weight = 3;
 
+		flag = 0;
+		flag_reset = 0;
+
 	end
 
 	divider d (clk, cp);
@@ -108,6 +115,16 @@ module main(
 		bee = choose_mode || (time_up && cp);
 	end
 
+	always @(posedge clk) begin
+		if (flag_reset) begin
+			// reset
+			flag <= 0;
+		end
+		else if ((mode_state == 'b0000) & choose_mode) begin
+			flag <= 1;
+		end
+	end
+
 	always @(posedge cp) begin
 		if (reset == 0) begin
 			// reset
@@ -115,7 +132,9 @@ module main(
 			mode_state <= 7;
 		end
 		else begin
-			last_mode_state <= mode_state;
+			if (last_mode_state != mode_state)
+				last_mode_state <= mode_state;
+			else last_mode_state <= last_mode_state;
 			mode_state <= next_mode_state;
 		end
 	end
@@ -142,9 +161,28 @@ module main(
 
 	always @(*) begin
 		case (mode_state)
-		0:	begin 	//pausing mode
+		0:	begin 	//pre pausing mode
 			{power_on, start} = 'b10;
-			if /////////////////////////TODO
+			hold = 1;
+			if (flag) begin
+				next_mode_state = 8;
+				next_work_state = 0;
+			end
+			else begin
+				flag_reset = 0;
+				if (reset == 0) begin
+					next_mode_state = 7;
+					next_work_state = 0;
+				end
+				else if (pause == 0) begin
+					next_mode_state = next_mode;
+					next_work_state = work_state;
+				end
+				else begin //pause == 1
+					next_mode_state = 0;
+					next_work_state = work_state;
+				end
+			end
 		end
 		1: 	begin 	//washing + rinsing + drying
 			{power_on, start} = 'b11;
@@ -751,7 +789,7 @@ module main(
 			num3 = 0;
 			recount = 'b11;
 			if (reset == 1) begin
-				next_mode_state = 0;
+				next_mode_state = 8;
 				next_work_state = 0;
 			end
 			else begin
@@ -759,8 +797,9 @@ module main(
 				next_work_state = 0;
 			end
 		end
-		8:	begin 	//pre pausing mode
+		8:	begin 	//pausing mode
 			{power_on, start} = 'b10;
+			flag_reset = 1;
 			case (next_mode)
 				0: 	begin
 					num1 = weight * 4 + 21;	

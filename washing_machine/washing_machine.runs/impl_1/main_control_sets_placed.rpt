@@ -1,7 +1,7 @@
 Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2015.2 (win64) Build 1266856 Fri Jun 26 16:35:25 MDT 2015
-| Date         : Mon Jun 12 17:01:50 2017
+| Date         : Mon Jun 12 22:46:26 2017
 | Host         : DESKTOP-N4CAU2H running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file main_control_sets_placed.rpt
 | Design       : main
@@ -22,8 +22,8 @@ Table of Contents
 +-------------------------------------------------------------------+-------+
 |                               Status                              | Count |
 +-------------------------------------------------------------------+-------+
-| Number of unique control sets                                     |    11 |
-| Minimum Number of register sites lost to control set restrictions |    33 |
+| Number of unique control sets                                     |    15 |
+| Minimum Number of register sites lost to control set restrictions |    58 |
 +-------------------------------------------------------------------+-------+
 
 
@@ -33,32 +33,36 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              24 |           15 |
+| No           | No                    | No                     |              43 |           26 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |              62 |           16 |
-| Yes          | No                    | No                     |              13 |            7 |
+| No           | Yes                   | No                     |              70 |           20 |
+| Yes          | No                    | No                     |              13 |            6 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |               4 |            3 |
+| Yes          | Yes                   | No                     |               0 |            0 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 3. Detailed Control Set Information
 -----------------------------------
 
-+-------------------------+-----------------------+---------------------------------+------------------+----------------+
-|       Clock Signal      |     Enable Signal     |         Set/Reset Signal        | Slice Load Count | Bel Load Count |
-+-------------------------+-----------------------+---------------------------------+------------------+----------------+
-| ~d/CLK                  |                       |                                 |                1 |              1 |
-|  clk_IBUF_BUFG          |                       |                                 |                2 |              3 |
-|  choose_mode_IBUF_BUFG  |                       |                                 |                2 |              3 |
-|  d/CLK                  | work_state[3]_i_2_n_0 | work_state[3]_i_1_n_0           |                3 |              4 |
-|  washing_reg_i_2_n_0    |                       |                                 |                2 |              5 |
-|  d/CLK                  |                       |                                 |                3 |              5 |
-|  d/CLK                  | cd/next2[4]_i_1_n_0   |                                 |                3 |              5 |
-|  recount_reg[1]_i_2_n_0 |                       |                                 |                5 |              7 |
-|  d/CLK                  | cd/next1[7]_i_1_n_0   |                                 |                4 |              8 |
-|  clk_IBUF_BUFG          |                       | d/counter[31]_i_1__0_n_0        |                8 |             31 |
-|  clk_IBUF_BUFG          |                       | cd/fd/dn/ss/counter[31]_i_1_n_0 |                8 |             31 |
-+-------------------------+-----------------------+---------------------------------+------------------+----------------+
++-------------------------+---------------------+---------------------------------+------------------+----------------+
+|       Clock Signal      |    Enable Signal    |         Set/Reset Signal        | Slice Load Count | Bel Load Count |
++-------------------------+---------------------+---------------------------------+------------------+----------------+
+|  hold_reg_i_2_n_0       |                     |                                 |                1 |              1 |
+|  flag_reset_reg_i_1_n_0 |                     |                                 |                1 |              1 |
+| ~d/CLK                  |                     |                                 |                1 |              1 |
+|  d/CLK                  |                     |                                 |                2 |              2 |
+|  clk_IBUF_BUFG          |                     |                                 |                3 |              4 |
+|  choose_mode_IBUF_BUFG  |                     |                                 |                2 |              4 |
+|  washing_reg_i_2_n_0    |                     |                                 |                3 |              5 |
+|  d/CLK                  | cd/next2[4]_i_1_n_0 |                                 |                2 |              5 |
+|  recount_reg[1]_i_2_n_0 |                     |                                 |                2 |              6 |
+|  d/CLK                  |                     | mode_state[3]_i_1_n_0           |                4 |              8 |
+|  d/CLK                  | cd/next1[7]_i_1_n_0 |                                 |                4 |              8 |
+|  num1_reg[5]_i_2_n_0    |                     |                                 |                6 |              9 |
+|  power_on_reg_i_2_n_0   |                     |                                 |                5 |             10 |
+|  clk_IBUF_BUFG          |                     | d/counter[31]_i_1__0_n_0        |                8 |             31 |
+|  clk_IBUF_BUFG          |                     | cd/fd/dn/ss/counter[31]_i_1_n_0 |                8 |             31 |
++-------------------------+---------------------+---------------------------------+------------------+----------------+
 
 

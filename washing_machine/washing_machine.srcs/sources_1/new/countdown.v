@@ -49,8 +49,6 @@ module countdown(
 
 	always @(*) final_time_up = time_up & pause;
 
-	//divider d (clk_k, clk);
-
 	assign w3 = num3;
 
 	format_disp fd (clk_k, w1, w2, w3, show_num, show_port);
@@ -114,10 +112,6 @@ module countdown(
 			time_up = 'b00;
 		end
 	end
-	
-	//always @(posedge clk_k) begin
-		//hold <= next_hold;
-	//end
 
 endmodule
 
