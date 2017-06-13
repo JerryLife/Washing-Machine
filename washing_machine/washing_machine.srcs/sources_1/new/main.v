@@ -27,6 +27,7 @@ module main(
 	input pause,
 	input choose_mode,	// button
 	input [1:0] clo_weight,
+	input child,
 //outputs
 	output reg bee,
 	output [6:0] show_num,
@@ -154,7 +155,7 @@ module main(
 	end
 
 	always @(posedge cp) begin
-		if (reset == 0) begin
+		if (reset == 0 && child == 0) begin
 			// reset
 			last_mode_state <= 7;
 			mode_state <= 7;
@@ -165,7 +166,7 @@ module main(
 	end
 
 	always @(posedge cp) begin
-		if (reset == 0) begin
+		if (reset == 0 && child == 0) begin
 			// reset
 			work_state <= 0;
 			last_work_state <= 0;
@@ -201,7 +202,7 @@ module main(
 					next_mode_state = 7;
 					next_work_state = 0;
 				end
-				else if (reset == 0) begin
+				else if (reset == 0 && child == 0) begin
 					next_mode_state = 7;
 					next_work_state = 0;
 					end_reset = 1;
@@ -223,7 +224,7 @@ module main(
 			ending = 0;
 			num1 = weight * 4 + 21;
 			num3 = weight;
-			if (reset == 0) begin
+			if (reset == 0 && child == 0) begin
 				next_mode_state = 7;
 				next_work_state = 0;
 			end
@@ -386,7 +387,7 @@ module main(
 			ending = 0;
 			num1 = weight + 9;
 			num3 = weight;
-			if (reset == 0) begin
+			if (reset == 0 && child == 0) begin
 				next_mode_state = 7;
 				next_work_state = 0;
 			end
@@ -459,7 +460,7 @@ module main(
 			{power_on, start} = 'b11;
 			num1 = weight * 3 + 18;
 			num3 = weight;
-			if (reset == 0) begin
+			if (reset == 0 && child == 0) begin
 				next_mode_state = 7;
 				next_work_state = 0;
 			end
@@ -591,7 +592,7 @@ module main(
 			clear_reg = 0;
 			num1 = weight * 2 + 9;
 			num3 = weight;
-			if (reset == 0) begin
+			if (reset == 0 && child == 0) begin
 				next_mode_state = 7;
 				next_work_state = 0;
 			end
@@ -694,7 +695,7 @@ module main(
 			num1 = weight * 3 + 12;
 			num3 = weight;
 			ending = 0;
-			if (reset == 0) begin
+			if (reset == 0 && child == 0) begin
 				next_mode_state = 7;
 				next_work_state = 0;
 			end
@@ -827,7 +828,7 @@ module main(
 			clear_reg = 0;
 			num1 = weight + 3;
 			num3 = weight;
-			if (reset == 0) begin
+			if (reset == 0 && child == 0) begin
 				next_mode_state = 7;
 				next_work_state = 0;
 			end
@@ -970,7 +971,7 @@ module main(
 				next_mode_state = 7;
 				next_work_state = 0;
 			end
-			else if (reset == 0) begin
+			else if (reset == 0 && child == 0) begin
 				next_mode_state = 7;
 				next_work_state = 0;
 				end_reset = 1;

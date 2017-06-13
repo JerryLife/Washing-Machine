@@ -2,8 +2,8 @@
 # Vivado v2015.2 (64-bit)
 # SW Build 1266856 on Fri Jun 26 16:35:25 MDT 2015
 # IP Build 1264090 on Wed Jun 24 14:22:01 MDT 2015
-# Start of session at: Tue Jun 13 14:09:32 2017
-# Process ID: 9028
+# Start of session at: Tue Jun 13 14:55:06 2017
+# Process ID: 16944
 # Log file: D:/VerilogCode/washing_machine/washing_machine.runs/synth_1/main.vds
 # Journal file: D:/VerilogCode/washing_machine/washing_machine.runs/synth_1\vivado.jou
 #-----------------------------------------------------------
@@ -13,7 +13,7 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:07 . Memory (MB): peak = 264.922 ; gain = 92.617
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:07 . Memory (MB): peak = 264.570 ; gain = 91.617
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'main' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:23]
 INFO: [Synth 8-638] synthesizing module 'divider' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/divider.v:23]
@@ -31,10 +31,13 @@ INFO: [Synth 8-256] done synthesizing module 'format_disp' (5#1) [D:/VerilogCode
 INFO: [Synth 8-256] done synthesizing module 'countdown' (6#1) [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/countdown.v:23]
 INFO: [Synth 8-638] synthesizing module 'sel_mode' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/sel_mode.v:23]
 INFO: [Synth 8-256] done synthesizing module 'sel_mode' (7#1) [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/sel_mode.v:23]
-INFO: [Synth 8-155] case statement is not full and has no default [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:187]
+INFO: [Synth 8-155] case statement is not full and has no default [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:188]
+INFO: [Synth 8-4512] found unpartitioned construct node [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:158]
+INFO: [Synth 8-4512] found unpartitioned construct node [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:158]
+INFO: [Synth 8-4512] found unpartitioned construct node [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:158]
 INFO: [Synth 8-256] done synthesizing module 'main' (8#1) [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:23]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:08 . Memory (MB): peak = 299.242 ; gain = 126.938
+Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 299.602 ; gain = 126.648
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -44,7 +47,7 @@ Report Check Netlist:
 |1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
 +------+------------------+-------+---------+-------+------------------+
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:08 . Memory (MB): peak = 299.242 ; gain = 126.938
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:09 . Memory (MB): peak = 299.602 ; gain = 126.648
 ---------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7a100tcsg324-1
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -58,16 +61,16 @@ Completed Processing XDC Constraints
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.015 . Memory (MB): peak = 613.820 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.029 . Memory (MB): peak = 613.098 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:14 ; elapsed = 00:00:17 . Memory (MB): peak = 613.820 ; gain = 441.516
+Finished Constraint Validation : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 613.098 ; gain = 440.145
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a100tcsg324-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:14 ; elapsed = 00:00:17 . Memory (MB): peak = 613.820 ; gain = 441.516
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 613.098 ; gain = 440.145
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -218,6 +221,18 @@ Usage:
 ---------------------------------------------------------------------
 incorrect argument "-dict" for "set_property" at line 40 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
 incorrect set of required parameters for "set_property" at line 40 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+---------------------------------------------------------------------
+Usage:
+  set_property
+    [-help]
+    [-quiet]
+    attribute
+    value
+    object
+    [{>|>>} <stdoutFile>]
+---------------------------------------------------------------------
+incorrect argument "-dict" for "set_property" at line 48 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+incorrect set of required parameters for "set_property" at line 48 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
 ---------------------------------------------------------------------
 Usage:
   set_property
@@ -421,7 +436,7 @@ Usage:
     [{>|>>} <stdoutFile>]
 ---------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:14 ; elapsed = 00:00:17 . Memory (MB): peak = 613.820 ; gain = 441.516
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 613.098 ; gain = 440.145
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5545] ROM "clk_N" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
 INFO: [Synth 8-5545] ROM "counter" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
@@ -464,26 +479,26 @@ INFO: [Synth 8-5544] ROM "rinsing" won't be mapped to Block RAM because address 
 INFO: [Synth 8-5544] ROM "washing" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "washing" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "weight" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
-WARNING: [Synth 8-327] inferring latch for variable 'power_on_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:189]
-WARNING: [Synth 8-327] inferring latch for variable 'start_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:189]
-WARNING: [Synth 8-327] inferring latch for variable 'washing_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:238]
-WARNING: [Synth 8-327] inferring latch for variable 'rinsing_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:238]
-WARNING: [Synth 8-327] inferring latch for variable 'drying_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:238]
-WARNING: [Synth 8-327] inferring latch for variable 'water_in_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:238]
-WARNING: [Synth 8-327] inferring latch for variable 'water_out_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:238]
-WARNING: [Synth 8-327] inferring latch for variable 'recount_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:122]
-WARNING: [Synth 8-327] inferring latch for variable 'hold_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:122]
-WARNING: [Synth 8-327] inferring latch for variable 'num1_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:122]
-WARNING: [Synth 8-327] inferring latch for variable 'num2_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:122]
-WARNING: [Synth 8-327] inferring latch for variable 'num3_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:122]
-WARNING: [Synth 8-327] inferring latch for variable 'clear_reg_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:126]
-WARNING: [Synth 8-327] inferring latch for variable 'next_mode_state_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:195]
-WARNING: [Synth 8-327] inferring latch for variable 'end_reset_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:193]
-WARNING: [Synth 8-327] inferring latch for variable 'ending_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:192]
-WARNING: [Synth 8-327] inferring latch for variable 'flag_reset_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:199]
-WARNING: [Synth 8-327] inferring latch for variable 'next_work_state_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:196]
+WARNING: [Synth 8-327] inferring latch for variable 'power_on_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:190]
+WARNING: [Synth 8-327] inferring latch for variable 'start_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:190]
+WARNING: [Synth 8-327] inferring latch for variable 'washing_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:239]
+WARNING: [Synth 8-327] inferring latch for variable 'rinsing_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:239]
+WARNING: [Synth 8-327] inferring latch for variable 'drying_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:239]
+WARNING: [Synth 8-327] inferring latch for variable 'water_in_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:239]
+WARNING: [Synth 8-327] inferring latch for variable 'water_out_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:239]
+WARNING: [Synth 8-327] inferring latch for variable 'recount_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:123]
+WARNING: [Synth 8-327] inferring latch for variable 'hold_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:123]
+WARNING: [Synth 8-327] inferring latch for variable 'num1_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:123]
+WARNING: [Synth 8-327] inferring latch for variable 'num2_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:123]
+WARNING: [Synth 8-327] inferring latch for variable 'num3_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:123]
+WARNING: [Synth 8-327] inferring latch for variable 'clear_reg_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:127]
+WARNING: [Synth 8-327] inferring latch for variable 'next_mode_state_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:196]
+WARNING: [Synth 8-327] inferring latch for variable 'end_reset_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:194]
+WARNING: [Synth 8-327] inferring latch for variable 'ending_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:193]
+WARNING: [Synth 8-327] inferring latch for variable 'flag_reset_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:200]
+WARNING: [Synth 8-327] inferring latch for variable 'next_work_state_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:197]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:16 ; elapsed = 00:00:19 . Memory (MB): peak = 613.820 ; gain = 441.516
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:16 ; elapsed = 00:00:19 . Memory (MB): peak = 613.098 ; gain = 440.145
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -638,7 +653,7 @@ BRAMs: 270 (col length: RAMB18 80 RAMB36 40)
 ---------------------------------------------------------------------------------
 Finished Part Resource Summary
 ---------------------------------------------------------------------------------
-Start Parallel Synthesis Optimization  : Time (s): cpu = 00:00:16 ; elapsed = 00:00:19 . Memory (MB): peak = 613.820 ; gain = 441.516
+Start Parallel Synthesis Optimization  : Time (s): cpu = 00:00:16 ; elapsed = 00:00:19 . Memory (MB): peak = 613.098 ; gain = 440.145
 ---------------------------------------------------------------------------------
 Start Cross Boundary Optimization
 ---------------------------------------------------------------------------------
@@ -648,9 +663,9 @@ INFO: [Synth 8-5545] ROM "ss/counter" won't be mapped to RAM because address siz
 INFO: [Synth 8-5546] ROM "time_up" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "time_up" won't be mapped to RAM because it is too sparse
 ---------------------------------------------------------------------------------
-Finished Cross Boundary Optimization : Time (s): cpu = 00:00:17 ; elapsed = 00:00:20 . Memory (MB): peak = 613.820 ; gain = 441.516
+Finished Cross Boundary Optimization : Time (s): cpu = 00:00:17 ; elapsed = 00:00:20 . Memory (MB): peak = 613.098 ; gain = 440.145
 ---------------------------------------------------------------------------------
-Finished Parallel Reinference  : Time (s): cpu = 00:00:17 ; elapsed = 00:00:20 . Memory (MB): peak = 613.820 ; gain = 441.516
+Finished Parallel Reinference  : Time (s): cpu = 00:00:17 ; elapsed = 00:00:20 . Memory (MB): peak = 613.098 ; gain = 440.145
 
 Report RTL Partitions: 
 +-+--------------+------------+----------+
@@ -674,16 +689,16 @@ WARNING: [Synth 8-3332] Sequential element (\num3_reg[6] ) is unused and will be
 Start Area Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Area Optimization : Time (s): cpu = 00:00:22 ; elapsed = 00:00:25 . Memory (MB): peak = 613.820 ; gain = 441.516
+Finished Area Optimization : Time (s): cpu = 00:00:22 ; elapsed = 00:00:25 . Memory (MB): peak = 613.098 ; gain = 440.145
 ---------------------------------------------------------------------------------
-Finished Parallel Area Optimization  : Time (s): cpu = 00:00:22 ; elapsed = 00:00:25 . Memory (MB): peak = 613.820 ; gain = 441.516
+Finished Parallel Area Optimization  : Time (s): cpu = 00:00:22 ; elapsed = 00:00:25 . Memory (MB): peak = 613.098 ; gain = 440.145
 
 Report RTL Partitions: 
 +-+--------------+------------+----------+
 | |RTL Partition |Replication |Instances |
 +-+--------------+------------+----------+
 +-+--------------+------------+----------+
-Finished Parallel Synthesis Optimization  : Time (s): cpu = 00:00:22 ; elapsed = 00:00:25 . Memory (MB): peak = 613.820 ; gain = 441.516
+Finished Parallel Synthesis Optimization  : Time (s): cpu = 00:00:22 ; elapsed = 00:00:25 . Memory (MB): peak = 613.098 ; gain = 440.145
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
@@ -846,6 +861,18 @@ Usage:
     object
     [{>|>>} <stdoutFile>]
 ---------------------------------------------------------------------
+incorrect argument "-dict" for "set_property" at line 48 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+incorrect set of required parameters for "set_property" at line 48 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+---------------------------------------------------------------------
+Usage:
+  set_property
+    [-help]
+    [-quiet]
+    attribute
+    value
+    object
+    [{>|>>} <stdoutFile>]
+---------------------------------------------------------------------
 incorrect argument "-dict" for "set_property" at line 60 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
 incorrect set of required parameters for "set_property" at line 60 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
 ---------------------------------------------------------------------
@@ -1039,10 +1066,10 @@ Usage:
     [{>|>>} <stdoutFile>]
 ---------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:34 ; elapsed = 00:00:38 . Memory (MB): peak = 613.820 ; gain = 441.516
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:35 ; elapsed = 00:00:38 . Memory (MB): peak = 613.098 ; gain = 440.145
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:34 ; elapsed = 00:00:38 . Memory (MB): peak = 613.820 ; gain = 441.516
+Finished Timing Optimization : Time (s): cpu = 00:00:35 ; elapsed = 00:00:38 . Memory (MB): peak = 613.098 ; gain = 440.145
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -1056,7 +1083,7 @@ Start Technology Mapping
 WARNING: [Synth 8-3332] Sequential element (\cd/next1_reg[7] ) is unused and will be removed from module main.
 WARNING: [Synth 8-3332] Sequential element (\cd/next2_reg[7] ) is unused and will be removed from module main.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:36 ; elapsed = 00:00:40 . Memory (MB): peak = 621.371 ; gain = 449.066
+Finished Technology Mapping : Time (s): cpu = 00:00:36 ; elapsed = 00:00:40 . Memory (MB): peak = 621.313 ; gain = 448.359
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -1074,7 +1101,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:36 ; elapsed = 00:00:40 . Memory (MB): peak = 621.371 ; gain = 449.066
+Finished IO Insertion : Time (s): cpu = 00:00:36 ; elapsed = 00:00:40 . Memory (MB): peak = 621.313 ; gain = 448.359
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -1087,7 +1114,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:36 ; elapsed = 00:00:40 . Memory (MB): peak = 621.371 ; gain = 449.066
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:36 ; elapsed = 00:00:40 . Memory (MB): peak = 621.313 ; gain = 448.359
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -1099,13 +1126,13 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:36 ; elapsed = 00:00:40 . Memory (MB): peak = 621.371 ; gain = 449.066
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:36 ; elapsed = 00:00:40 . Memory (MB): peak = 621.313 ; gain = 448.359
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Start Renaming Generated Ports : Time (s): cpu = 00:00:36 ; elapsed = 00:00:40 . Memory (MB): peak = 621.371 ; gain = 449.066
+Start Renaming Generated Ports : Time (s): cpu = 00:00:36 ; elapsed = 00:00:40 . Memory (MB): peak = 621.313 ; gain = 448.359
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:36 ; elapsed = 00:00:40 . Memory (MB): peak = 621.371 ; gain = 449.066
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:36 ; elapsed = 00:00:40 . Memory (MB): peak = 621.313 ; gain = 448.359
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -1123,18 +1150,18 @@ Report Cell Usage:
 +------+-------+------+
 |1     |BUFG   |     2|
 |2     |CARRY4 |    16|
-|3     |LUT1   |    66|
-|4     |LUT2   |    36|
-|5     |LUT3   |    28|
-|6     |LUT4   |    52|
-|7     |LUT5   |    73|
-|8     |LUT6   |   218|
-|9     |MUXF7  |    14|
+|3     |LUT1   |    65|
+|4     |LUT2   |    38|
+|5     |LUT3   |    36|
+|6     |LUT4   |    43|
+|7     |LUT5   |    88|
+|8     |LUT6   |   217|
+|9     |MUXF7  |    18|
 |10    |FDCE   |     3|
 |11    |FDRE   |    92|
 |12    |FDSE   |     3|
 |13    |LD     |    35|
-|14    |IBUF   |     6|
+|14    |IBUF   |     7|
 |15    |OBUF   |    23|
 +------+-------+------+
 
@@ -1142,22 +1169,22 @@ Report Instance Areas:
 +------+-----------+------------+------+
 |      |Instance   |Module      |Cells |
 +------+-----------+------------+------+
-|1     |top        |            |   667|
-|2     |  cd       |countdown   |   385|
+|1     |top        |            |   686|
+|2     |  cd       |countdown   |   394|
 |3     |    fd     |format_disp |   207|
 |4     |      dn   |disp_num    |   207|
 |5     |        ss |show_seg    |   207|
-|6     |  cm       |sel_mode    |    41|
+|6     |  cm       |sel_mode    |    45|
 |7     |  d        |divider     |    81|
 +------+-----------+------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:36 ; elapsed = 00:00:40 . Memory (MB): peak = 621.371 ; gain = 449.066
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:37 ; elapsed = 00:00:41 . Memory (MB): peak = 621.313 ; gain = 448.359
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 31 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:25 ; elapsed = 00:00:31 . Memory (MB): peak = 621.371 ; gain = 95.832
-Synthesis Optimization Complete : Time (s): cpu = 00:00:37 ; elapsed = 00:00:41 . Memory (MB): peak = 621.371 ; gain = 449.066
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:25 ; elapsed = 00:00:31 . Memory (MB): peak = 621.313 ; gain = 97.242
+Synthesis Optimization Complete : Time (s): cpu = 00:00:37 ; elapsed = 00:00:41 . Memory (MB): peak = 621.313 ; gain = 448.359
 INFO: [Project 1-571] Translating synthesized netlist
-INFO: [Netlist 29-17] Analyzing 57 Unisim elements for replacement
+INFO: [Netlist 29-17] Analyzing 58 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 1 inverter(s) to 1 load pin(s).
@@ -1166,8 +1193,8 @@ INFO: [Project 1-111] Unisim Transformation Summary:
   LD => LDCE: 35 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-76 Infos, 31 Warnings, 0 Critical Warnings and 0 Errors encountered.
+79 Infos, 31 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:36 ; elapsed = 00:00:39 . Memory (MB): peak = 621.371 ; gain = 410.629
-report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.055 . Memory (MB): peak = 621.371 ; gain = 0.000
-INFO: [Common 17-206] Exiting Vivado at Tue Jun 13 14:10:15 2017...
+synth_design: Time (s): cpu = 00:00:36 ; elapsed = 00:00:39 . Memory (MB): peak = 621.313 ; gain = 410.922
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.053 . Memory (MB): peak = 621.313 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Tue Jun 13 14:55:49 2017...

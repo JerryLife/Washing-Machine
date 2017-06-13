@@ -1,7 +1,7 @@
 Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2015.2 (win64) Build 1266856 Fri Jun 26 16:35:25 MDT 2015
-| Date         : Tue Jun 13 14:10:55 2017
+| Date         : Tue Jun 13 14:56:29 2017
 | Host         : DESKTOP-N4CAU2H running 64-bit major release  (build 9200)
 | Command      : report_io -file main_io_placed.rpt
 | Design       : main
@@ -23,7 +23,7 @@ Table of Contents
 +---------------+
 | Total User IO |
 +---------------+
-|            29 |
+|            30 |
 +---------------+
 
 
@@ -349,7 +349,7 @@ Table of Contents
 | V8         |               | High Range | VCCO_34                      | VCCO        |             |      34 |            |      |                     |                      |   any** |            |           |      |                  |
 | V9         |               | High Range | IO_L21N_T3_DQS_34            | User IO     |             |      34 |            |      |                     |                      |         |            |           |      |                  |
 | V10        |               | High Range | IO_L21P_T3_DQS_14            | User IO     |             |      14 |            |      |                     |                      |         |            |           |      |                  |
-| V11        |               | High Range | IO_L21N_T3_DQS_A06_D22_14    | User IO     |             |      14 |            |      |                     |                      |         |            |           |      |                  |
+| V11        | child         | High Range | IO_L21N_T3_DQS_A06_D22_14    | INPUT       | LVCMOS33    |      14 |            |      |                     |                 NONE |         | FIXED      |           |      | NONE             |
 | V12        |               | High Range | IO_L20N_T3_A07_D23_14        | User IO     |             |      14 |            |      |                     |                      |         |            |           |      |                  |
 | V13        |               |            | GND                          | GND         |             |         |            |      |                     |                      |     0.0 |            |           |      |                  |
 | V14        |               | High Range | IO_L22N_T3_A04_D20_14        | User IO     |             |      14 |            |      |                     |                      |         |            |           |      |                  |
