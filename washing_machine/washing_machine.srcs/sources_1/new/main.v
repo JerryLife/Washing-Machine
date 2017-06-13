@@ -38,7 +38,10 @@ module main(
 	output reg rinsing,
 	output reg drying,
 	output reg water_in,
-	output reg water_out
+	output reg water_out,
+	output reg final_mode_wash,
+	output reg final_mode_rinse,
+	output reg final_mode_dry
 
 	//debug
 	/*,output [3:0] work_state,
@@ -84,6 +87,8 @@ module main(
 	wire clear;
 	reg clear_reg;
 
+	reg mode_wash, mode_rinse, mode_dry;
+
 	initial begin
 		bee = 0;
 		mode_state = 0;
@@ -123,6 +128,26 @@ module main(
 	countdown cd (clk, cp, recount, hold, num1, num2, num3, time_up, show_num, show_port, clear);
 
 	sel_mode cm (choose_mode, next_mode);
+
+	always @(posedge clk) begin
+		if (mode_wash == 1) begin
+			final_mode_wash = mode_wash & cp;
+			final_mode_rinse = mode_rinse;
+			final_mode_dry = mode_dry;
+		end
+		else begin
+			if (mode_rinse == 1) begin
+				final_mode_wash = mode_wash;
+				final_mode_rinse = mode_rinse & cp;
+				final_mode_dry = mode_dry;
+			end
+			else begin
+				final_mode_wash = mode_wash;
+				final_mode_rinse = mode_rinse;
+				final_mode_dry = mode_dry & cp;
+			end
+		end
+	end
 
 	assign clear = clear_reg;
 
@@ -202,7 +227,7 @@ module main(
 					next_mode_state = 7;
 					next_work_state = 0;
 				end
-				else if (reset == 0 && child == 0) begin
+				else if (reset == 0 && child) begin
 					next_mode_state = 7;
 					next_work_state = 0;
 					end_reset = 1;
@@ -218,7 +243,9 @@ module main(
 			end
 		end
 		1: 	begin 	//washing + rinsing + drying
+			{mode_wash, mode_rinse, mode_dry} = 'b000;
 			{power_on, start} = 'b11;
+			{mode_wash, mode_rinse, mode_dry} = 'b111;
 			stop = 0;
 			clear_reg = 0;
 			ending = 0;
@@ -237,6 +264,7 @@ module main(
 			case (work_state)
 			0:	begin 	//start
 				{washing, rinsing, drying, water_in, water_out} = 'b00000;
+				{mode_wash, mode_rinse, mode_dry} = 'b111;
 				end_reset = 1;
 				num2 = weight;
 				hold = 1;
@@ -245,6 +273,7 @@ module main(
 			end
 			1:	begin 	//water in
 				{washing, rinsing, drying, water_in, water_out} = 'b00010;
+				{mode_wash, mode_rinse, mode_dry} = 'b111;
 				hold = 0;
 				end_reset = 0;
 				if (time_up[1]) begin
@@ -260,6 +289,7 @@ module main(
 			end
 			2:	begin 	//washing
 				{washing, rinsing, drying, water_in, water_out} = 'b10000;
+				{mode_wash, mode_rinse, mode_dry} = 'b111;
 				hold = 0;
 				end_reset = 0;
 				if (time_up[1]) begin
@@ -275,6 +305,7 @@ module main(
 			end
 			3:	begin 	//water out
 				{washing, rinsing, drying, water_in, water_out} = 'b00001;
+				{mode_wash, mode_rinse, mode_dry} = 'b011;
 				hold = 0;
 				end_reset = 0;
 				if (time_up[1]) begin
@@ -290,6 +321,7 @@ module main(
 			end
 			4: 	begin 	//drying
 				{washing, rinsing, drying, water_in, water_out} = 'b00100;
+				{mode_wash, mode_rinse, mode_dry} = 'b011;
 				hold = 0;
 				end_reset = 0;
 				if (time_up[1]) begin
@@ -305,6 +337,7 @@ module main(
 			end
 			5:	begin 	//water in
 				{washing, rinsing, drying, water_in, water_out} = 'b00010;
+				{mode_wash, mode_rinse, mode_dry} = 'b011;
 				hold = 0;
 				end_reset = 0;
 				if (time_up[1]) begin
@@ -320,6 +353,7 @@ module main(
 			end
 			6:	begin 	//rinsing
 				{washing, rinsing, drying, water_in, water_out} = 'b01000;
+				{mode_wash, mode_rinse, mode_dry} = 'b011;
 				hold = 0;
 				end_reset = 0;
 				if (time_up[1]) begin
@@ -335,6 +369,7 @@ module main(
 			end
 			7:	begin 	//water out
 				{washing, rinsing, drying, water_in, water_out} = 'b00001;
+				{mode_wash, mode_rinse, mode_dry} = 'b001;
 				hold = 0;
 				end_reset = 0;
 				if (time_up[1]) begin
@@ -350,6 +385,7 @@ module main(
 			end
 			8:	begin 	//drying
 				{washing, rinsing, drying, water_in, water_out} = 'b00100;
+				{mode_wash, mode_rinse, mode_dry} = 'b001;
 				hold = 0;
 				end_reset = 0;
 				if (time_up[1] | time_up[0]) begin
@@ -365,6 +401,7 @@ module main(
 			end
 			default: begin
 				{washing, rinsing, drying, water_in, water_out} = 'b00000;
+				{mode_wash, mode_rinse, mode_dry} = 'b000;
 				num2 = weight;
 				recount = 'b00;
 				hold = 0;
@@ -387,7 +424,7 @@ module main(
 			ending = 0;
 			num1 = weight + 9;
 			num3 = weight;
-			if (reset == 0 && child == 0) begin
+			if (reset == 0) begin
 				next_mode_state = 7;
 				next_work_state = 0;
 			end
@@ -405,9 +442,11 @@ module main(
 				hold = 1;
 				next_work_state = 1;
 				recount = 'b11;
+				{mode_wash, mode_rinse, mode_dry} = 'b100;
 			end
 			1:	begin 	//water in
 				{washing, rinsing, drying, water_in, water_out} = 'b00010;
+				{mode_wash, mode_rinse, mode_dry} = 'b100;
 				hold = 0;
 				end_reset = 0;
 				if (time_up[1]) begin
@@ -423,6 +462,7 @@ module main(
 			end
 			2:	begin 	//washing
 				{washing, rinsing, drying, water_in, water_out} = 'b10000;
+				{mode_wash, mode_rinse, mode_dry} = 'b100;
 				hold = 0;
 				end_reset = 0;
 				if (time_up[1] | time_up[0]) begin
@@ -458,9 +498,10 @@ module main(
 			clear_reg = 0;
 			ending = 0;
 			{power_on, start} = 'b11;
+			{mode_wash, mode_rinse, mode_dry} = 'b110;
 			num1 = weight * 3 + 18;
 			num3 = weight;
-			if (reset == 0 && child == 0) begin
+			if (reset == 0) begin
 				next_mode_state = 7;
 				next_work_state = 0;
 			end
@@ -473,6 +514,7 @@ module main(
 			case (work_state)
 			0:	begin 	//start
 				{washing, rinsing, drying, water_in, water_out} = 'b00000;
+				{mode_wash, mode_rinse, mode_dry} = 'b110;
 				end_reset = 1;
 				num2 = weight;
 				hold = 1;
@@ -481,6 +523,7 @@ module main(
 			end
 			1:	begin 	//water in
 				{washing, rinsing, drying, water_in, water_out} = 'b00010;
+				{mode_wash, mode_rinse, mode_dry} = 'b110;
 				hold = 0;
 				end_reset = 0;
 				if (time_up[1]) begin
@@ -496,6 +539,7 @@ module main(
 			end
 			2:	begin 	//washing
 				{washing, rinsing, drying, water_in, water_out} = 'b10000;
+				{mode_wash, mode_rinse, mode_dry} = 'b110;
 				hold = 0;
 				end_reset = 0;
 				if (time_up[1]) begin
@@ -511,6 +555,7 @@ module main(
 			end
 			3:	begin 	//water out
 				{washing, rinsing, drying, water_in, water_out} = 'b00001;
+				{mode_wash, mode_rinse, mode_dry} = 'b010;
 				hold = 0;
 				end_reset = 0;
 				if (time_up[1]) begin
@@ -526,6 +571,7 @@ module main(
 			end
 			4: 	begin 	//drying
 				{washing, rinsing, drying, water_in, water_out} = 'b00100;
+				{mode_wash, mode_rinse, mode_dry} = 'b010;
 				hold = 0;
 				end_reset = 0;
 				if (time_up[1]) begin
@@ -541,6 +587,7 @@ module main(
 			end
 			5:	begin 	//water in
 				{washing, rinsing, drying, water_in, water_out} = 'b00010;
+				{mode_wash, mode_rinse, mode_dry} = 'b010;
 				hold = 0;
 				end_reset = 0;
 				if (time_up[1]) begin
@@ -556,6 +603,7 @@ module main(
 			end
 			6:	begin 	//rinsing
 				{washing, rinsing, drying, water_in, water_out} = 'b01000;
+				{mode_wash, mode_rinse, mode_dry} = 'b010;
 				hold = 0;
 				end_reset = 0;
 				if (time_up[1] | time_up[0]) begin
@@ -571,6 +619,7 @@ module main(
 			end
 			default: begin
 				{washing, rinsing, drying, water_in, water_out} = 'b00000;
+				{mode_wash, mode_rinse, mode_dry} = 'b000;
 				num2 = weight;
 				recount = 'b00;
 				hold = 0;
@@ -588,11 +637,12 @@ module main(
 		end
 		4:	begin 	//rinsing
 			{power_on, start} = 'b11;
+			{mode_wash, mode_rinse, mode_dry} = 'b010;
 			stop = 0;
 			clear_reg = 0;
 			num1 = weight * 2 + 9;
 			num3 = weight;
-			if (reset == 0 && child == 0) begin
+			if (reset == 0) begin
 				next_mode_state = 7;
 				next_work_state = 0;
 			end
@@ -610,9 +660,11 @@ module main(
 				hold = 1;
 				next_work_state = 3;
 				recount = 'b11;
+				{mode_wash, mode_rinse, mode_dry} = 'b010;
 			end
 			3:	begin 	//water out
 				{washing, rinsing, drying, water_in, water_out} = 'b00001;
+				{mode_wash, mode_rinse, mode_dry} = 'b010;
 				hold = 0;
 				end_reset = 0;
 				if (time_up[1]) begin
@@ -628,6 +680,7 @@ module main(
 			end
 			4: 	begin 	//drying
 				{washing, rinsing, drying, water_in, water_out} = 'b00100;
+				{mode_wash, mode_rinse, mode_dry} = 'b010;
 				hold = 0;
 				end_reset = 0;
 				if (time_up[1]) begin
@@ -643,6 +696,7 @@ module main(
 			end
 			5:	begin 	//water in
 				{washing, rinsing, drying, water_in, water_out} = 'b00010;
+				{mode_wash, mode_rinse, mode_dry} = 'b010;
 				hold = 0;
 				end_reset = 0;
 				if (time_up[1]) begin
@@ -658,6 +712,7 @@ module main(
 			end
 			6:	begin 	//rinsing
 				{washing, rinsing, drying, water_in, water_out} = 'b01000;
+				{mode_wash, mode_rinse, mode_dry} = 'b010;
 				hold = 0;
 				end_reset = 0;
 				if (time_up[1] | time_up[0]) begin
@@ -673,6 +728,7 @@ module main(
 			end
 			default: begin
 				{washing, rinsing, drying, water_in, water_out} = 'b00000;
+				{mode_wash, mode_rinse, mode_dry} = 'b000;
 				num2 = weight;
 				recount = 'b00;
 				hold = 0;
@@ -692,10 +748,11 @@ module main(
 			stop = 0;
 			clear_reg = 0;
 			{power_on, start} = 'b11;
+			{mode_wash, mode_rinse, mode_dry} = 'b011;
 			num1 = weight * 3 + 12;
 			num3 = weight;
 			ending = 0;
-			if (reset == 0 && child == 0) begin
+			if (reset == 0) begin
 				next_mode_state = 7;
 				next_work_state = 0;
 			end
@@ -708,6 +765,7 @@ module main(
 			case (work_state)
 			0:	begin 	//start
 				{washing, rinsing, drying, water_in, water_out} = 'b00000;
+				{mode_wash, mode_rinse, mode_dry} = 'b011;
 				num2 = weight;
 				end_reset = 1;
 				hold = 1;
@@ -716,6 +774,7 @@ module main(
 			end
 			3:	begin 	//water out
 				{washing, rinsing, drying, water_in, water_out} = 'b00001;
+				{mode_wash, mode_rinse, mode_dry} = 'b011;
 				hold = 0;
 				end_reset = 0;
 				if (time_up[1]) begin
@@ -731,6 +790,7 @@ module main(
 			end
 			4: 	begin 	//drying
 				{washing, rinsing, drying, water_in, water_out} = 'b00100;
+				{mode_wash, mode_rinse, mode_dry} = 'b011;
 				hold = 0;
 				end_reset = 0;
 				if (time_up[1]) begin
@@ -746,6 +806,7 @@ module main(
 			end
 			5:	begin 	//water in
 				{washing, rinsing, drying, water_in, water_out} = 'b00010;
+				{mode_wash, mode_rinse, mode_dry} = 'b011;
 				hold = 0;
 				end_reset = 0;
 				if (time_up[1]) begin
@@ -761,6 +822,7 @@ module main(
 			end
 			6:	begin 	//rinsing
 				{washing, rinsing, drying, water_in, water_out} = 'b01000;
+				{mode_wash, mode_rinse, mode_dry} = 'b011;
 				hold = 0;
 				end_reset = 0;
 				if (time_up[1]) begin
@@ -776,6 +838,7 @@ module main(
 			end
 			7:	begin 	//water out
 				{washing, rinsing, drying, water_in, water_out} = 'b00001;
+				{mode_wash, mode_rinse, mode_dry} = 'b001;
 				hold = 0;
 				end_reset = 0;
 				if (time_up[1]) begin
@@ -791,6 +854,7 @@ module main(
 			end
 			8:	begin 	//drying
 				{washing, rinsing, drying, water_in, water_out} = 'b00100;
+				{mode_wash, mode_rinse, mode_dry} = 'b001;
 				hold = 0;
 				end_reset = 0;
 				if (time_up[1] | time_up[0]) begin
@@ -806,6 +870,7 @@ module main(
 			end
 			default: begin
 				{washing, rinsing, drying, water_in, water_out} = 'b00000;
+				{mode_wash, mode_rinse, mode_dry} = 'b000;
 				num2 = weight;
 				recount = 'b00;
 				hold = 0;
@@ -824,11 +889,12 @@ module main(
 		6:	begin 	//drying
 			stop = 0;
 			{power_on, start} = 'b11;
+			{mode_wash, mode_rinse, mode_dry} = 'b001;
 			ending = 0;
 			clear_reg = 0;
 			num1 = weight + 3;
 			num3 = weight;
-			if (reset == 0 && child == 0) begin
+			if (reset == 0) begin
 				next_mode_state = 7;
 				next_work_state = 0;
 			end
@@ -841,6 +907,7 @@ module main(
 			case (work_state)
 			0:	begin 	//start
 				{washing, rinsing, drying, water_in, water_out} = 'b00000;
+				{mode_wash, mode_rinse, mode_dry} = 'b001;
 				end_reset = 1;
 				num2 = weight;
 				hold = 1;
@@ -849,6 +916,7 @@ module main(
 			end
 			7:	begin 	//water out
 				{washing, rinsing, drying, water_in, water_out} = 'b00001;
+				{mode_wash, mode_rinse, mode_dry} = 'b001;
 				end_reset = 0;
 				hold = 0;
 				if (time_up[1]) begin
@@ -864,6 +932,7 @@ module main(
 			end
 			8:	begin 	//drying
 				{washing, rinsing, drying, water_in, water_out} = 'b00100;
+				{mode_wash, mode_rinse, mode_dry} = 'b001;
 				hold = 0;
 				end_reset = 0;
 				if (time_up[1] | time_up[0]) begin
@@ -879,6 +948,7 @@ module main(
 			end
 			default: begin
 				{washing, rinsing, drying, water_in, water_out} = 'b00000;
+				{mode_wash, mode_rinse, mode_dry} = 'b000;
 				num2 = weight;
 				recount = 'b00;
 				hold = 0;
@@ -927,41 +997,49 @@ module main(
 					num1 = weight * 4 + 21;	
 					num2 = weight;
 					num3 = weight;
+					{mode_wash, mode_rinse, mode_dry} = 'b000;
 				end
 				1:	begin
 					num1 = weight * 4 + 21;	
 					num2 = weight;
 					num3 = weight;
+					{mode_wash, mode_rinse, mode_dry} = 'b111;
 				end
 				2:	begin
 					num1 = weight + 9;
 					num2 = weight;
 					num3 = weight;
+					{mode_wash, mode_rinse, mode_dry} = 'b100;
 				end
 				3:	begin
 					num1 = weight * 3 + 18;
 					num2 = weight;
 					num3 = weight;
+					{mode_wash, mode_rinse, mode_dry} = 'b110;
 				end
 				4:	begin
 					num1 = weight * 2 + 9;
 					num2 = weight;
 					num3 = weight;
+					{mode_wash, mode_rinse, mode_dry} = 'b010;
 				end
 				5:	begin
 					num1 = weight * 3 + 12;
 					num2 = weight;
 					num3 = weight;
+					{mode_wash, mode_rinse, mode_dry} = 'b011;
 				end
 				6:	begin
 					num1 = weight + 3;
 					num2 = weight;
 					num3 = weight;
+					{mode_wash, mode_rinse, mode_dry} = 'b001;
 				end
 				default: begin
 					num1 = 0;
 					num2 = 0;
 					num3 = 0;
+					{mode_wash, mode_rinse, mode_dry} = 'b000;
 				end
 			endcase
 			recount = 'b11;
@@ -971,7 +1049,7 @@ module main(
 				next_mode_state = 7;
 				next_work_state = 0;
 			end
-			else if (reset == 0 && child == 0) begin
+			else if (reset == 0) begin
 				next_mode_state = 7;
 				next_work_state = 0;
 				end_reset = 1;
