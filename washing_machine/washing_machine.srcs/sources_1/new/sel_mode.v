@@ -26,7 +26,7 @@ module sel_mode(
     );
 
 	initial begin
-		next_mode = 6;	
+		next_mode = 1;	
 	end
 
 	always @(posedge btn) begin

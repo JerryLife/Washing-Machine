@@ -1,0 +1,688 @@
+#-----------------------------------------------------------
+# Vivado v2015.2 (64-bit)
+# SW Build 1266856 on Fri Jun 26 16:35:25 MDT 2015
+# IP Build 1264090 on Wed Jun 24 14:22:01 MDT 2015
+# Start of session at: Tue Jun 13 11:29:22 2017
+# Process ID: 19600
+# Log file: D:/VerilogCode/washing_machine/washing_machine.runs/synth_1/main.vds
+# Journal file: D:/VerilogCode/washing_machine/washing_machine.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source main.tcl -notrace
+Command: synth_design -top main -part xc7a100tcsg324-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 264.664 ; gain = 92.547
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'main' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:23]
+INFO: [Synth 8-638] synthesizing module 'divider' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/divider.v:23]
+	Parameter dely500us bound to: 50000000 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'divider' (1#1) [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/divider.v:23]
+INFO: [Synth 8-638] synthesizing module 'countdown' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/countdown.v:23]
+INFO: [Synth 8-638] synthesizing module 'format_disp' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/format_disp.v:23]
+INFO: [Synth 8-638] synthesizing module 'disp_num' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/disp_num.v:23]
+INFO: [Synth 8-638] synthesizing module 'num2seg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/num2seg.v:23]
+INFO: [Synth 8-256] done synthesizing module 'num2seg' (2#1) [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/num2seg.v:23]
+INFO: [Synth 8-638] synthesizing module 'show_seg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/show_seg.v:23]
+INFO: [Synth 8-256] done synthesizing module 'show_seg' (3#1) [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/show_seg.v:23]
+INFO: [Synth 8-256] done synthesizing module 'disp_num' (4#1) [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/disp_num.v:23]
+INFO: [Synth 8-256] done synthesizing module 'format_disp' (5#1) [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/format_disp.v:23]
+INFO: [Synth 8-256] done synthesizing module 'countdown' (6#1) [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/countdown.v:23]
+INFO: [Synth 8-638] synthesizing module 'sel_mode' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/sel_mode.v:23]
+INFO: [Synth 8-256] done synthesizing module 'sel_mode' (7#1) [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/sel_mode.v:23]
+INFO: [Synth 8-155] case statement is not full and has no default [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:182]
+INFO: [Synth 8-256] done synthesizing module 'main' (8#1) [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:23]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:08 . Memory (MB): peak = 298.984 ; gain = 126.867
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:08 . Memory (MB): peak = 298.984 ; gain = 126.867
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7a100tcsg324-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc]
+Finished Parsing XDC File [D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc]
+Completed Processing XDC Constraints
+
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.017 . Memory (MB): peak = 613.223 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:14 ; elapsed = 00:00:17 . Memory (MB): peak = 613.223 ; gain = 441.105
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a100tcsg324-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:14 ; elapsed = 00:00:17 . Memory (MB): peak = 613.223 ; gain = 441.105
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+incorrect argument "-dict" for "set_property" at line 7 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+incorrect set of required parameters for "set_property" at line 7 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+---------------------------------------------------------------------
+Usage:
+  set_property
+    [-help]
+    [-quiet]
+    attribute
+    value
+    object
+    [{>|>>} <stdoutFile>]
+---------------------------------------------------------------------
+incorrect argument "-dict" for "set_property" at line 13 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+incorrect set of required parameters for "set_property" at line 13 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+---------------------------------------------------------------------
+Usage:
+  set_property
+    [-help]
+    [-quiet]
+    attribute
+    value
+    object
+    [{>|>>} <stdoutFile>]
+---------------------------------------------------------------------
+incorrect argument "-dict" for "set_property" at line 14 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+incorrect set of required parameters for "set_property" at line 14 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+---------------------------------------------------------------------
+Usage:
+  set_property
+    [-help]
+    [-quiet]
+    attribute
+    value
+    object
+    [{>|>>} <stdoutFile>]
+---------------------------------------------------------------------
+incorrect argument "-dict" for "set_property" at line 15 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+incorrect set of required parameters for "set_property" at line 15 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+---------------------------------------------------------------------
+Usage:
+  set_property
+    [-help]
+    [-quiet]
+    attribute
+    value
+    object
+    [{>|>>} <stdoutFile>]
+---------------------------------------------------------------------
+incorrect argument "-dict" for "set_property" at line 16 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+incorrect set of required parameters for "set_property" at line 16 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+---------------------------------------------------------------------
+Usage:
+  set_property
+    [-help]
+    [-quiet]
+    attribute
+    value
+    object
+    [{>|>>} <stdoutFile>]
+---------------------------------------------------------------------
+incorrect argument "-dict" for "set_property" at line 33 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+incorrect set of required parameters for "set_property" at line 33 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+---------------------------------------------------------------------
+Usage:
+  set_property
+    [-help]
+    [-quiet]
+    attribute
+    value
+    object
+    [{>|>>} <stdoutFile>]
+---------------------------------------------------------------------
+incorrect argument "-dict" for "set_property" at line 34 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+incorrect set of required parameters for "set_property" at line 34 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+---------------------------------------------------------------------
+Usage:
+  set_property
+    [-help]
+    [-quiet]
+    attribute
+    value
+    object
+    [{>|>>} <stdoutFile>]
+---------------------------------------------------------------------
+incorrect argument "-dict" for "set_property" at line 35 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+incorrect set of required parameters for "set_property" at line 35 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+---------------------------------------------------------------------
+Usage:
+  set_property
+    [-help]
+    [-quiet]
+    attribute
+    value
+    object
+    [{>|>>} <stdoutFile>]
+---------------------------------------------------------------------
+incorrect argument "-dict" for "set_property" at line 36 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+incorrect set of required parameters for "set_property" at line 36 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+---------------------------------------------------------------------
+Usage:
+  set_property
+    [-help]
+    [-quiet]
+    attribute
+    value
+    object
+    [{>|>>} <stdoutFile>]
+---------------------------------------------------------------------
+incorrect argument "-dict" for "set_property" at line 37 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+incorrect set of required parameters for "set_property" at line 37 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+---------------------------------------------------------------------
+Usage:
+  set_property
+    [-help]
+    [-quiet]
+    attribute
+    value
+    object
+    [{>|>>} <stdoutFile>]
+---------------------------------------------------------------------
+incorrect argument "-dict" for "set_property" at line 38 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+incorrect set of required parameters for "set_property" at line 38 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+---------------------------------------------------------------------
+Usage:
+  set_property
+    [-help]
+    [-quiet]
+    attribute
+    value
+    object
+    [{>|>>} <stdoutFile>]
+---------------------------------------------------------------------
+incorrect argument "-dict" for "set_property" at line 39 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+incorrect set of required parameters for "set_property" at line 39 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+---------------------------------------------------------------------
+Usage:
+  set_property
+    [-help]
+    [-quiet]
+    attribute
+    value
+    object
+    [{>|>>} <stdoutFile>]
+---------------------------------------------------------------------
+incorrect argument "-dict" for "set_property" at line 40 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+incorrect set of required parameters for "set_property" at line 40 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+---------------------------------------------------------------------
+Usage:
+  set_property
+    [-help]
+    [-quiet]
+    attribute
+    value
+    object
+    [{>|>>} <stdoutFile>]
+---------------------------------------------------------------------
+incorrect argument "-dict" for "set_property" at line 60 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+incorrect set of required parameters for "set_property" at line 60 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+---------------------------------------------------------------------
+Usage:
+  set_property
+    [-help]
+    [-quiet]
+    attribute
+    value
+    object
+    [{>|>>} <stdoutFile>]
+---------------------------------------------------------------------
+incorrect argument "-dict" for "set_property" at line 61 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+incorrect set of required parameters for "set_property" at line 61 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+---------------------------------------------------------------------
+Usage:
+  set_property
+    [-help]
+    [-quiet]
+    attribute
+    value
+    object
+    [{>|>>} <stdoutFile>]
+---------------------------------------------------------------------
+incorrect argument "-dict" for "set_property" at line 62 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+incorrect set of required parameters for "set_property" at line 62 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+---------------------------------------------------------------------
+Usage:
+  set_property
+    [-help]
+    [-quiet]
+    attribute
+    value
+    object
+    [{>|>>} <stdoutFile>]
+---------------------------------------------------------------------
+incorrect argument "-dict" for "set_property" at line 63 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+incorrect set of required parameters for "set_property" at line 63 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+---------------------------------------------------------------------
+Usage:
+  set_property
+    [-help]
+    [-quiet]
+    attribute
+    value
+    object
+    [{>|>>} <stdoutFile>]
+---------------------------------------------------------------------
+incorrect argument "-dict" for "set_property" at line 64 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+incorrect set of required parameters for "set_property" at line 64 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+---------------------------------------------------------------------
+Usage:
+  set_property
+    [-help]
+    [-quiet]
+    attribute
+    value
+    object
+    [{>|>>} <stdoutFile>]
+---------------------------------------------------------------------
+incorrect argument "-dict" for "set_property" at line 65 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+incorrect set of required parameters for "set_property" at line 65 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+---------------------------------------------------------------------
+Usage:
+  set_property
+    [-help]
+    [-quiet]
+    attribute
+    value
+    object
+    [{>|>>} <stdoutFile>]
+---------------------------------------------------------------------
+incorrect argument "-dict" for "set_property" at line 66 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+incorrect set of required parameters for "set_property" at line 66 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+---------------------------------------------------------------------
+Usage:
+  set_property
+    [-help]
+    [-quiet]
+    attribute
+    value
+    object
+    [{>|>>} <stdoutFile>]
+---------------------------------------------------------------------
+incorrect argument "-dict" for "set_property" at line 70 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+incorrect set of required parameters for "set_property" at line 70 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+---------------------------------------------------------------------
+Usage:
+  set_property
+    [-help]
+    [-quiet]
+    attribute
+    value
+    object
+    [{>|>>} <stdoutFile>]
+---------------------------------------------------------------------
+incorrect argument "-dict" for "set_property" at line 71 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+incorrect set of required parameters for "set_property" at line 71 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+---------------------------------------------------------------------
+Usage:
+  set_property
+    [-help]
+    [-quiet]
+    attribute
+    value
+    object
+    [{>|>>} <stdoutFile>]
+---------------------------------------------------------------------
+incorrect argument "-dict" for "set_property" at line 72 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+incorrect set of required parameters for "set_property" at line 72 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+---------------------------------------------------------------------
+Usage:
+  set_property
+    [-help]
+    [-quiet]
+    attribute
+    value
+    object
+    [{>|>>} <stdoutFile>]
+---------------------------------------------------------------------
+incorrect argument "-dict" for "set_property" at line 73 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+incorrect set of required parameters for "set_property" at line 73 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+---------------------------------------------------------------------
+Usage:
+  set_property
+    [-help]
+    [-quiet]
+    attribute
+    value
+    object
+    [{>|>>} <stdoutFile>]
+---------------------------------------------------------------------
+incorrect argument "-dict" for "set_property" at line 74 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+incorrect set of required parameters for "set_property" at line 74 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+---------------------------------------------------------------------
+Usage:
+  set_property
+    [-help]
+    [-quiet]
+    attribute
+    value
+    object
+    [{>|>>} <stdoutFile>]
+---------------------------------------------------------------------
+incorrect argument "-dict" for "set_property" at line 75 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+incorrect set of required parameters for "set_property" at line 75 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+---------------------------------------------------------------------
+Usage:
+  set_property
+    [-help]
+    [-quiet]
+    attribute
+    value
+    object
+    [{>|>>} <stdoutFile>]
+---------------------------------------------------------------------
+incorrect argument "-dict" for "set_property" at line 76 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+incorrect set of required parameters for "set_property" at line 76 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+---------------------------------------------------------------------
+Usage:
+  set_property
+    [-help]
+    [-quiet]
+    attribute
+    value
+    object
+    [{>|>>} <stdoutFile>]
+---------------------------------------------------------------------
+incorrect argument "-dict" for "set_property" at line 77 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+incorrect set of required parameters for "set_property" at line 77 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+---------------------------------------------------------------------
+Usage:
+  set_property
+    [-help]
+    [-quiet]
+    attribute
+    value
+    object
+    [{>|>>} <stdoutFile>]
+---------------------------------------------------------------------
+incorrect argument "-dict" for "set_property" at line 86 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+incorrect set of required parameters for "set_property" at line 86 of file D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc
+---------------------------------------------------------------------
+Usage:
+  set_property
+    [-help]
+    [-quiet]
+    attribute
+    value
+    object
+    [{>|>>} <stdoutFile>]
+---------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:14 ; elapsed = 00:00:17 . Memory (MB): peak = 613.223 ; gain = 441.105
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5545] ROM "clk_N" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "counter" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "counter" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "counter" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5544] ROM "next1" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "time_up" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "time_up" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "force_end" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "hold" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "hold" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "hold" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "hold" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "hold" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "ending" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "ending" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "ending" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "ending" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "ending" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "end_reset" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "end_reset" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "end_reset" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "end_reset" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "end_reset" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "water_out" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "water_out" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "water_out" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "water_out" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "water_in" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "water_in" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "water_in" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "water_in" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "drying" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "drying" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "drying" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "drying" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "rinsing" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "rinsing" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "rinsing" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "washing" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "washing" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "weight" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+WARNING: [Synth 8-327] inferring latch for variable 'power_on_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:184]
+WARNING: [Synth 8-327] inferring latch for variable 'start_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:184]
+WARNING: [Synth 8-327] inferring latch for variable 'washing_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:231]
+WARNING: [Synth 8-327] inferring latch for variable 'rinsing_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:231]
+WARNING: [Synth 8-327] inferring latch for variable 'drying_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:231]
+WARNING: [Synth 8-327] inferring latch for variable 'water_in_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:231]
+WARNING: [Synth 8-327] inferring latch for variable 'water_out_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:231]
+WARNING: [Synth 8-327] inferring latch for variable 'recount_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:119]
+WARNING: [Synth 8-327] inferring latch for variable 'hold_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:119]
+WARNING: [Synth 8-327] inferring latch for variable 'num1_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:119]
+WARNING: [Synth 8-327] inferring latch for variable 'num2_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:119]
+WARNING: [Synth 8-327] inferring latch for variable 'num3_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:119]
+WARNING: [Synth 8-327] inferring latch for variable 'next_mode_state_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:189]
+WARNING: [Synth 8-327] inferring latch for variable 'end_reset_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:187]
+WARNING: [Synth 8-327] inferring latch for variable 'ending_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:186]
+WARNING: [Synth 8-327] inferring latch for variable 'flag_reset_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:193]
+WARNING: [Synth 8-327] inferring latch for variable 'next_work_state_reg' [D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v:190]
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:16 ; elapsed = 00:00:19 . Memory (MB): peak = 613.223 ; gain = 441.105
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 2     
+	   2 Input      8 Bit       Adders := 2     
+	   2 Input      5 Bit       Adders := 1     
+	   2 Input      4 Bit       Adders := 2     
+	   2 Input      2 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 2     
+	                8 Bit    Registers := 2     
+	                4 Bit    Registers := 2     
+	                2 Bit    Registers := 2     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   8 Input      8 Bit        Muxes := 1     
+	   4 Input      8 Bit        Muxes := 2     
+	   2 Input      8 Bit        Muxes := 2     
+	  10 Input      8 Bit        Muxes := 1     
+	  11 Input      7 Bit        Muxes := 8     
+	   2 Input      7 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 30    
+	   8 Input      4 Bit        Muxes := 2     
+	   4 Input      4 Bit        Muxes := 2     
+	   3 Input      4 Bit        Muxes := 1     
+	  10 Input      3 Bit        Muxes := 4     
+	   4 Input      3 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 12    
+	   8 Input      3 Bit        Muxes := 2     
+	   6 Input      3 Bit        Muxes := 1     
+	   3 Input      3 Bit        Muxes := 1     
+	   7 Input      3 Bit        Muxes := 2     
+	  11 Input      3 Bit        Muxes := 2     
+	   9 Input      3 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 6     
+	  10 Input      2 Bit        Muxes := 1     
+	   4 Input      2 Bit        Muxes := 3     
+	   8 Input      2 Bit        Muxes := 2     
+	   6 Input      2 Bit        Muxes := 1     
+	   5 Input      2 Bit        Muxes := 1     
+	   4 Input      1 Bit        Muxes := 14    
+	   2 Input      1 Bit        Muxes := 29    
+	   3 Input      1 Bit        Muxes := 2     
+	  10 Input      1 Bit        Muxes := 20    
+	   8 Input      1 Bit        Muxes := 18    
+	   5 Input      1 Bit        Muxes := 1     
+	   6 Input      1 Bit        Muxes := 8     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module main 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      5 Bit       Adders := 1     
+	   2 Input      4 Bit       Adders := 1     
+	   2 Input      2 Bit       Adders := 1     
++---Registers : 
+	                4 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	  10 Input      8 Bit        Muxes := 1     
+	   2 Input      7 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 29    
+	   8 Input      4 Bit        Muxes := 2     
+	   4 Input      4 Bit        Muxes := 2     
+	   3 Input      4 Bit        Muxes := 1     
+	  10 Input      3 Bit        Muxes := 4     
+	   4 Input      3 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 12    
+	   8 Input      3 Bit        Muxes := 2     
+	   6 Input      3 Bit        Muxes := 1     
+	   3 Input      3 Bit        Muxes := 1     
+	   7 Input      3 Bit        Muxes := 2     
+	  11 Input      3 Bit        Muxes := 2     
+	   9 Input      3 Bit        Muxes := 1     
+	  10 Input      2 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 4     
+	   4 Input      2 Bit        Muxes := 3     
+	   8 Input      2 Bit        Muxes := 2     
+	   6 Input      2 Bit        Muxes := 1     
+	   5 Input      2 Bit        Muxes := 1     
+	  10 Input      1 Bit        Muxes := 20    
+	   2 Input      1 Bit        Muxes := 25    
+	   4 Input      1 Bit        Muxes := 12    
+	   8 Input      1 Bit        Muxes := 18    
+	   5 Input      1 Bit        Muxes := 1     
+	   6 Input      1 Bit        Muxes := 8     
+Module divider 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
+Module num2seg 
+Detailed RTL Component Info : 
++---Muxes : 
+	  11 Input      7 Bit        Muxes := 1     
+Module show_seg 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 1     
++---Muxes : 
+	   8 Input      8 Bit        Muxes := 1     
+Module countdown 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      8 Bit       Adders := 2     
++---Registers : 
+	                8 Bit    Registers := 2     
+	                2 Bit    Registers := 1     
++---Muxes : 
+	   4 Input      8 Bit        Muxes := 2     
+	   2 Input      8 Bit        Muxes := 2     
+	   2 Input      2 Bit        Muxes := 2     
+	   4 Input      1 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 4     
+	   3 Input      1 Bit        Muxes := 2     
+Module sel_mode 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      4 Bit       Adders := 1     
++---Registers : 
+	                4 Bit    Registers := 1     
++---Muxes : 
+	   2 Input      4 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 240 (col length:80)
+BRAMs: 270 (col length: RAMB18 80 RAMB36 40)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+Start Parallel Synthesis Optimization  : Time (s): cpu = 00:00:16 ; elapsed = 00:00:19 . Memory (MB): peak = 613.223 ; gain = 441.105
+---------------------------------------------------------------------------------
+Start Cross Boundary Optimization
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5545] ROM "counter" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "clk_N" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "ss/counter" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5546] ROM "time_up" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "time_up" won't be mapped to RAM because it is too sparse
+---------------------------------------------------------------------------------
+Finished Cross Boundary Optimization : Time (s): cpu = 00:00:17 ; elapsed = 00:00:20 . Memory (MB): peak = 613.223 ; gain = 441.105
+---------------------------------------------------------------------------------
+Finished Parallel Reinference  : Time (s): cpu = 00:00:17 ; elapsed = 00:00:20 . Memory (MB): peak = 613.223 ; gain = 441.105
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\num2_reg[7] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\num3_reg[7] )
+WARNING: [Synth 8-3332] Sequential element (\num2_reg[7] ) is unused and will be removed from module main.
+WARNING: [Synth 8-3332] Sequential element (\num2_reg[6] ) is unused and will be removed from module main.
+WARNING: [Synth 8-3332] Sequential element (\num2_reg[5] ) is unused and will be removed from module main.
+WARNING: [Synth 8-3332] Sequential element (\num2_reg[4] ) is unused and will be removed from module main.
+WARNING: [Synth 8-3332] Sequential element (\num3_reg[7] ) is unused and will be removed from module main.
+WARNING: [Synth 8-3332] Sequential element (\num1_reg[6] ) is unused and will be removed from module main.
+WARNING: [Synth 8-3332] Sequential element (\num1_reg[7] ) is unused and will be removed from module main.
+WARNING: [Synth 8-3332] Sequential element (\num3_reg[3] ) is unused and will be removed from module main.
+WARNING: [Synth 8-3332] Sequential element (\num3_reg[4] ) is unused and will be removed from module main.
+WARNING: [Synth 8-3332] Sequential element (\num3_reg[5] ) is unused and will be removed from module main.
+WARNING: [Synth 8-3332] Sequential element (\num3_reg[6] ) is unused and will be removed from module main.
+---------------------------------------------------------------------------------
+Start Area Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Area Optimization : Time (s): cpu = 00:00:22 ; elapsed = 00:00:25 . Memory (MB): peak = 613.223 ; gain = 441.105
+---------------------------------------------------------------------------------
+Finished Parallel Area Optimization  : Time (s): cpu = 00:00:22 ; elapsed = 00:00:25 . Memory (MB): peak = 613.223 ; gain = 441.105
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+Finished Parallel Synthesis Optimization  : Time (s): cpu = 00:00:22 ; elapsed = 00:00:25 . Memory (MB): peak = 613.223 ; gain = 441.105
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------

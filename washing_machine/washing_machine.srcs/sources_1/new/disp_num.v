@@ -31,7 +31,8 @@ module disp_num(
 	input [3:0] num7,
 	input [3:0] num8,
 	output [6:0] show_num,
-	output [7:0] show_port
+	output [7:0] show_port,
+	input clear
     );
 
 	wire [6:0] n1, n2, n3, n4, n5, n6, n7, n8;
@@ -43,6 +44,6 @@ module disp_num(
 	num2seg ns6 (num6, n6);
 	num2seg ns7 (num7, n7);
 	num2seg ns8 (num8, n8);
-	show_seg ss (clk, n1, n2, n3, n4, n5, n6, n7, n8, show_num, show_port);
+	show_seg ss (clk, n1, n2, n3, n4, n5, n6, n7, n8, show_num, show_port, clear);
 
 endmodule

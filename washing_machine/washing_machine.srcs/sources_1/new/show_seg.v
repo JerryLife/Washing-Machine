@@ -31,7 +31,8 @@ module show_seg(
 	input [6:0] num7,
 	input [6:0] num8,
 	output reg [6:0] final_num,
-	output reg [7:0] show_port
+	output reg [7:0] show_port,
+	input clear
     );
 	
 	reg [31:0] counter;
@@ -46,7 +47,11 @@ module show_seg(
 	end
 
 	always @(*) begin
-		if (counter < 100000) begin
+		if (clear) begin
+			final_num = num1;
+			show_port = 'b11111111;
+		end
+		else if (counter < 100000) begin
 			final_num = num1;
 			show_port = 'b11111110;
 		end	

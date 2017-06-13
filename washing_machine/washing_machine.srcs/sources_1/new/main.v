@@ -40,10 +40,11 @@ module main(
 	output reg water_out
 
 	//debug
-	,output [3:0] mode_state,
-	output [1:0] time_up,
-	output flag,
-	output flag_reset/*,
+	/*,output [3:0] work_state,
+	//output time_up,
+	output ending,
+	output force_end,
+	output end_reset */ /*,
 
 	output [3:0] work_state,
 	output hold,
@@ -75,6 +76,12 @@ module main(
 	reg stop;
 	reg flag_reset;
 	reg flag;
+	reg [1:0] end_count;
+	reg [3:0] end_state;
+	reg end_reset, ending;
+	reg force_end;
+	wire clear;
+	reg clear_reg;
 
 	initial begin
 		bee = 0;
@@ -102,17 +109,38 @@ module main(
 
 		flag = 0;
 		flag_reset = 0;
-
+		end_count = 0;
+		end_state = 0;
+		end_reset = 0;
+		ending = 0;
+		force_end = 0;
+		clear_reg = 0;
 	end
 
 	divider d (clk, cp);
 
-	countdown cd (clk, cp, recount, hold, num1, num2, num3, time_up, show_num, show_port);
+	countdown cd (clk, cp, recount, hold, num1, num2, num3, time_up, show_num, show_port, clear);
 
 	sel_mode cm (choose_mode, next_mode);
 
+	assign clear = clear_reg;
+
 	always @(*) begin
-		bee = choose_mode || (time_up && cp);
+		bee = choose_mode | ((time_up[0] | time_up[1]) & cp);
+	end
+
+	always @(posedge cp or posedge end_reset) begin
+		if (end_reset) begin
+			// reset
+			end_count <= 0;
+			force_end <= 0;
+		end
+		else if (end_count == 3) begin
+			force_end <= 1;
+		end
+		else if (ending == 1) begin
+			end_count = end_count + 1;
+		end
 	end
 
 	always @(posedge clk) begin
@@ -132,9 +160,6 @@ module main(
 			mode_state <= 7;
 		end
 		else begin
-			if (last_mode_state != mode_state)
-				last_mode_state <= mode_state;
-			else last_mode_state <= last_mode_state;
 			mode_state <= next_mode_state;
 		end
 	end
@@ -146,7 +171,6 @@ module main(
 			last_work_state <= 0;
 		end
 		else begin
-			last_work_state <= work_state;
 			work_state <= next_work_state;
 		end
 	end
@@ -164,15 +188,23 @@ module main(
 		0:	begin 	//pre pausing mode
 			{power_on, start} = 'b10;
 			hold = 1;
+			clear_reg = 0;
+			ending = 0;
+			end_reset = 0;
 			if (flag) begin
 				next_mode_state = 8;
 				next_work_state = 0;
 			end
 			else begin
 				flag_reset = 0;
-				if (reset == 0) begin
+				if (force_end & reset) begin
 					next_mode_state = 7;
 					next_work_state = 0;
+				end
+				else if (reset == 0) begin
+					next_mode_state = 7;
+					next_work_state = 0;
+					end_reset = 1;
 				end
 				else if (pause == 0) begin
 					next_mode_state = next_mode;
@@ -187,6 +219,8 @@ module main(
 		1: 	begin 	//washing + rinsing + drying
 			{power_on, start} = 'b11;
 			stop = 0;
+			clear_reg = 0;
+			ending = 0;
 			num1 = weight * 4 + 21;
 			num3 = weight;
 			if (reset == 0) begin
@@ -202,6 +236,7 @@ module main(
 			case (work_state)
 			0:	begin 	//start
 				{washing, rinsing, drying, water_in, water_out} = 'b00000;
+				end_reset = 1;
 				num2 = weight;
 				hold = 1;
 				next_work_state = 1;
@@ -210,6 +245,7 @@ module main(
 			1:	begin 	//water in
 				{washing, rinsing, drying, water_in, water_out} = 'b00010;
 				hold = 0;
+				end_reset = 0;
 				if (time_up[1]) begin
 					next_work_state = 2;
 					num2 = 9;
@@ -224,6 +260,7 @@ module main(
 			2:	begin 	//washing
 				{washing, rinsing, drying, water_in, water_out} = 'b10000;
 				hold = 0;
+				end_reset = 0;
 				if (time_up[1]) begin
 					next_work_state = 3;
 					num2 = weight;
@@ -238,6 +275,7 @@ module main(
 			3:	begin 	//water out
 				{washing, rinsing, drying, water_in, water_out} = 'b00001;
 				hold = 0;
+				end_reset = 0;
 				if (time_up[1]) begin
 					next_work_state = 4;
 					num2 = 3;
@@ -252,6 +290,7 @@ module main(
 			4: 	begin 	//drying
 				{washing, rinsing, drying, water_in, water_out} = 'b00100;
 				hold = 0;
+				end_reset = 0;
 				if (time_up[1]) begin
 					next_work_state = 5;
 					num2 = weight;
@@ -266,6 +305,7 @@ module main(
 			5:	begin 	//water in
 				{washing, rinsing, drying, water_in, water_out} = 'b00010;
 				hold = 0;
+				end_reset = 0;
 				if (time_up[1]) begin
 					next_work_state = 6;
 					num2 = 6;
@@ -280,6 +320,7 @@ module main(
 			6:	begin 	//rinsing
 				{washing, rinsing, drying, water_in, water_out} = 'b01000;
 				hold = 0;
+				end_reset = 0;
 				if (time_up[1]) begin
 					next_work_state = 7;
 					num2 = weight;
@@ -294,6 +335,7 @@ module main(
 			7:	begin 	//water out
 				{washing, rinsing, drying, water_in, water_out} = 'b00001;
 				hold = 0;
+				end_reset = 0;
 				if (time_up[1]) begin
 					next_work_state = 8;
 					num2 = 3;
@@ -308,7 +350,8 @@ module main(
 			8:	begin 	//drying
 				{washing, rinsing, drying, water_in, water_out} = 'b00100;
 				hold = 0;
-				if (time_up[1]) begin
+				end_reset = 0;
+				if (time_up[1] | time_up[0]) begin
 					next_work_state = 9;
 					num2 = 0;
 					recount = 'b10;
@@ -324,8 +367,14 @@ module main(
 				num2 = weight;
 				recount = 'b00;
 				hold = 0;
-				next_work_state = 0;
-				stop = 1;
+				ending = 1;
+				next_work_state = 8;
+				if (force_end) begin
+					next_mode_state = 7;
+				end 
+				else begin
+					next_mode_state = mode_state;
+				end
 			end
 			endcase
 			end
@@ -333,6 +382,8 @@ module main(
 		2:	begin 	//washing
 			{power_on, start} = 'b11;
 			stop = 0;
+			clear_reg = 0;
+			ending = 0;
 			num1 = weight + 9;
 			num3 = weight;
 			if (reset == 0) begin
@@ -348,6 +399,7 @@ module main(
 			case (work_state)
 			0:	begin 	//start
 				{washing, rinsing, drying, water_in, water_out} = 'b00000;
+				end_reset = 1;
 				num2 = weight;
 				hold = 1;
 				next_work_state = 1;
@@ -356,6 +408,7 @@ module main(
 			1:	begin 	//water in
 				{washing, rinsing, drying, water_in, water_out} = 'b00010;
 				hold = 0;
+				end_reset = 0;
 				if (time_up[1]) begin
 					next_work_state = 2;
 					num2 = 9;
@@ -370,9 +423,10 @@ module main(
 			2:	begin 	//washing
 				{washing, rinsing, drying, water_in, water_out} = 'b10000;
 				hold = 0;
-				if (time_up[1]) begin
+				end_reset = 0;
+				if (time_up[1] | time_up[0]) begin
 					next_work_state = 3;
-					num2 = weight;
+					num2 = 0;
 					recount = 'b10;
 				end
 				else begin
@@ -385,15 +439,23 @@ module main(
 				{washing, rinsing, drying, water_in, water_out} = 'b00000;
 				num2 = weight;
 				recount = 'b00;
-				hold = 0;
-				next_work_state = 0;
-				stop = 1;
+				hold = 0; 
+				ending = 1;
+				next_work_state = 3;
+				if (force_end) begin
+					next_mode_state = 7;
+				end 
+				else begin
+					next_mode_state = mode_state;
+				end
 			end
 			endcase
 			end
 		end
 		3:	begin 	//washing + rinsing
 			stop = 0;
+			clear_reg = 0;
+			ending = 0;
 			{power_on, start} = 'b11;
 			num1 = weight * 3 + 18;
 			num3 = weight;
@@ -410,6 +472,7 @@ module main(
 			case (work_state)
 			0:	begin 	//start
 				{washing, rinsing, drying, water_in, water_out} = 'b00000;
+				end_reset = 1;
 				num2 = weight;
 				hold = 1;
 				next_work_state = 1;
@@ -418,6 +481,7 @@ module main(
 			1:	begin 	//water in
 				{washing, rinsing, drying, water_in, water_out} = 'b00010;
 				hold = 0;
+				end_reset = 0;
 				if (time_up[1]) begin
 					next_work_state = 2;
 					num2 = 9;
@@ -432,6 +496,7 @@ module main(
 			2:	begin 	//washing
 				{washing, rinsing, drying, water_in, water_out} = 'b10000;
 				hold = 0;
+				end_reset = 0;
 				if (time_up[1]) begin
 					next_work_state = 3;
 					num2 = weight;
@@ -446,6 +511,7 @@ module main(
 			3:	begin 	//water out
 				{washing, rinsing, drying, water_in, water_out} = 'b00001;
 				hold = 0;
+				end_reset = 0;
 				if (time_up[1]) begin
 					next_work_state = 4;
 					num2 = 3;
@@ -460,6 +526,7 @@ module main(
 			4: 	begin 	//drying
 				{washing, rinsing, drying, water_in, water_out} = 'b00100;
 				hold = 0;
+				end_reset = 0;
 				if (time_up[1]) begin
 					next_work_state = 5;
 					num2 = weight;
@@ -474,6 +541,7 @@ module main(
 			5:	begin 	//water in
 				{washing, rinsing, drying, water_in, water_out} = 'b00010;
 				hold = 0;
+				end_reset = 0;
 				if (time_up[1]) begin
 					next_work_state = 6;
 					num2 = 6;
@@ -488,9 +556,10 @@ module main(
 			6:	begin 	//rinsing
 				{washing, rinsing, drying, water_in, water_out} = 'b01000;
 				hold = 0;
-				if (time_up[1]) begin
+				end_reset = 0;
+				if (time_up[1] | time_up[0]) begin
 					next_work_state = 7;
-					num2 = weight;
+					num2 = 0;
 					recount = 'b10;
 				end
 				else begin
@@ -504,8 +573,14 @@ module main(
 				num2 = weight;
 				recount = 'b00;
 				hold = 0;
-				next_work_state = 0;
-				stop = 1;
+				ending = 1;
+				next_work_state = 7;
+				if (force_end) begin
+					next_mode_state = 7;
+				end 
+				else begin
+					next_mode_state = mode_state;
+				end
 			end
 			endcase
 			end
@@ -513,6 +588,7 @@ module main(
 		4:	begin 	//rinsing
 			{power_on, start} = 'b11;
 			stop = 0;
+			clear_reg = 0;
 			num1 = weight * 2 + 9;
 			num3 = weight;
 			if (reset == 0) begin
@@ -529,6 +605,7 @@ module main(
 			0:	begin 	//start
 				{washing, rinsing, drying, water_in, water_out} = 'b00000;
 				num2 = weight;
+				end_reset = 1;
 				hold = 1;
 				next_work_state = 3;
 				recount = 'b11;
@@ -536,6 +613,7 @@ module main(
 			3:	begin 	//water out
 				{washing, rinsing, drying, water_in, water_out} = 'b00001;
 				hold = 0;
+				end_reset = 0;
 				if (time_up[1]) begin
 					next_work_state = 4;
 					num2 = 3;
@@ -550,6 +628,7 @@ module main(
 			4: 	begin 	//drying
 				{washing, rinsing, drying, water_in, water_out} = 'b00100;
 				hold = 0;
+				end_reset = 0;
 				if (time_up[1]) begin
 					next_work_state = 5;
 					num2 = weight;
@@ -564,6 +643,7 @@ module main(
 			5:	begin 	//water in
 				{washing, rinsing, drying, water_in, water_out} = 'b00010;
 				hold = 0;
+				end_reset = 0;
 				if (time_up[1]) begin
 					next_work_state = 6;
 					num2 = 6;
@@ -578,9 +658,10 @@ module main(
 			6:	begin 	//rinsing
 				{washing, rinsing, drying, water_in, water_out} = 'b01000;
 				hold = 0;
-				if (time_up[1]) begin
+				end_reset = 0;
+				if (time_up[1] | time_up[0]) begin
 					next_work_state = 7;
-					num2 = weight;
+					num2 = 0;
 					recount = 'b10;
 				end
 				else begin
@@ -594,17 +675,25 @@ module main(
 				num2 = weight;
 				recount = 'b00;
 				hold = 0;
-				next_work_state = 0;
-				stop = 1;
+				ending = 1;
+				next_work_state = 7;
+				if (force_end) begin
+					next_mode_state = 7;
+				end 
+				else begin
+					next_mode_state = mode_state;
+				end
 			end
 			endcase
 			end
 		end
 		5:	begin 	//rinsing + drying
 			stop = 0;
+			clear_reg = 0;
 			{power_on, start} = 'b11;
 			num1 = weight * 3 + 12;
 			num3 = weight;
+			ending = 0;
 			if (reset == 0) begin
 				next_mode_state = 7;
 				next_work_state = 0;
@@ -619,6 +708,7 @@ module main(
 			0:	begin 	//start
 				{washing, rinsing, drying, water_in, water_out} = 'b00000;
 				num2 = weight;
+				end_reset = 1;
 				hold = 1;
 				next_work_state = 3;
 				recount = 'b11;
@@ -626,6 +716,7 @@ module main(
 			3:	begin 	//water out
 				{washing, rinsing, drying, water_in, water_out} = 'b00001;
 				hold = 0;
+				end_reset = 0;
 				if (time_up[1]) begin
 					next_work_state = 4;
 					num2 = 3;
@@ -640,6 +731,7 @@ module main(
 			4: 	begin 	//drying
 				{washing, rinsing, drying, water_in, water_out} = 'b00100;
 				hold = 0;
+				end_reset = 0;
 				if (time_up[1]) begin
 					next_work_state = 5;
 					num2 = weight;
@@ -654,6 +746,7 @@ module main(
 			5:	begin 	//water in
 				{washing, rinsing, drying, water_in, water_out} = 'b00010;
 				hold = 0;
+				end_reset = 0;
 				if (time_up[1]) begin
 					next_work_state = 6;
 					num2 = 6;
@@ -668,6 +761,7 @@ module main(
 			6:	begin 	//rinsing
 				{washing, rinsing, drying, water_in, water_out} = 'b01000;
 				hold = 0;
+				end_reset = 0;
 				if (time_up[1]) begin
 					next_work_state = 7;
 					num2 = weight;
@@ -682,6 +776,7 @@ module main(
 			7:	begin 	//water out
 				{washing, rinsing, drying, water_in, water_out} = 'b00001;
 				hold = 0;
+				end_reset = 0;
 				if (time_up[1]) begin
 					next_work_state = 8;
 					num2 = 3;
@@ -696,7 +791,8 @@ module main(
 			8:	begin 	//drying
 				{washing, rinsing, drying, water_in, water_out} = 'b00100;
 				hold = 0;
-				if (time_up[1]) begin
+				end_reset = 0;
+				if (time_up[1] | time_up[0]) begin
 					next_work_state = 9;
 					num2 = 0;
 					recount = 'b10;
@@ -712,8 +808,14 @@ module main(
 				num2 = weight;
 				recount = 'b00;
 				hold = 0;
-				next_work_state = 0;
-				stop = 1;
+				ending = 1;
+				next_work_state = 9;
+				if (force_end) begin
+					next_mode_state = 7;
+				end 
+				else begin
+					next_mode_state = mode_state;
+				end
 			end
 			endcase
 			end
@@ -721,6 +823,8 @@ module main(
 		6:	begin 	//drying
 			stop = 0;
 			{power_on, start} = 'b11;
+			ending = 0;
+			clear_reg = 0;
 			num1 = weight + 3;
 			num3 = weight;
 			if (reset == 0) begin
@@ -736,6 +840,7 @@ module main(
 			case (work_state)
 			0:	begin 	//start
 				{washing, rinsing, drying, water_in, water_out} = 'b00000;
+				end_reset = 1;
 				num2 = weight;
 				hold = 1;
 				next_work_state = 7;
@@ -743,6 +848,7 @@ module main(
 			end
 			7:	begin 	//water out
 				{washing, rinsing, drying, water_in, water_out} = 'b00001;
+				end_reset = 0;
 				hold = 0;
 				if (time_up[1]) begin
 					next_work_state = 8;
@@ -758,7 +864,8 @@ module main(
 			8:	begin 	//drying
 				{washing, rinsing, drying, water_in, water_out} = 'b00100;
 				hold = 0;
-				if (time_up[1]) begin
+				end_reset = 0;
+				if (time_up[1] | time_up[0]) begin
 					next_work_state = 9;
 					num2 = 0;
 					recount = 'b10;
@@ -774,8 +881,14 @@ module main(
 				num2 = weight;
 				recount = 'b00;
 				hold = 0;
-				next_work_state = 0;
-				stop = 1;
+				ending = 1;
+				next_work_state = 9;
+				if (force_end) begin
+					next_mode_state = 7;
+				end 
+				else begin
+					next_mode_state = mode_state;
+				end
 			end
 			endcase
 			end
@@ -783,23 +896,31 @@ module main(
 		7:	begin 	//power off
 			{power_on, start} = 'b00;
 			{washing, rinsing, drying, water_in, water_out} = 'b00000;
+			clear_reg = 1;
+			end_reset = 0;
 			hold = 0;
 			num1 = 0;
 			num2 = 0;
 			num3 = 0;
 			recount = 'b11;
-			if (reset == 1) begin
+			if (force_end & reset) begin
+				next_mode_state = 7;
+				next_work_state = 0;
+			end
+			else if (reset == 1) begin
 				next_mode_state = 8;
 				next_work_state = 0;
 			end
 			else begin
 				next_mode_state = 7;
 				next_work_state = 0;
+				end_reset = 1;
 			end
 		end
 		8:	begin 	//pausing mode
 			{power_on, start} = 'b10;
 			flag_reset = 1;
+			clear_reg = 0;
 			case (next_mode)
 				0: 	begin
 					num1 = weight * 4 + 21;	
@@ -845,9 +966,14 @@ module main(
 			recount = 'b11;
 			hold = 1;
 
-			if (reset == 0) begin
+			if (force_end & reset) begin
 				next_mode_state = 7;
 				next_work_state = 0;
+			end
+			else if (reset == 0) begin
+				next_mode_state = 7;
+				next_work_state = 0;
+				end_reset = 1;
 			end
 			else if (pause == 0) begin
 				next_mode_state = next_mode;

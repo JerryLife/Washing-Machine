@@ -26,7 +26,8 @@ module format_disp(
 	input [7:0] num2,
 	input [7:0] num3,
 	output [6:0] show_num,
-	output [7:0] show_port
+	output [7:0] show_port,
+	input clear
     );
 	
 	//debug
@@ -42,5 +43,5 @@ module format_disp(
 	assign n7 = num3 / 10;
 	assign n8 = num3 % 10;
 
-	disp_num dn (clk, n1, n2, n3, n4, n5, n6, n7, n8, show_num, show_port);
+	disp_num dn (clk, n1, n2, n3, n4, n5, n6, n7, n8, show_num, show_port, clear);
 endmodule

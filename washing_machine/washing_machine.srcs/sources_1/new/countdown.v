@@ -30,8 +30,8 @@ module countdown(
 	input [7:0] num3, 	// constant
 	output reg [1:0] final_time_up,
 	output [6:0] show_num,
-	output [7:0] show_port
-
+	output [7:0] show_port,
+    input clear
 	//debug
 	/*,output [7:0] w1,
 	output [7:0] w2,
@@ -51,7 +51,7 @@ module countdown(
 
 	assign w3 = num3;
 
-	format_disp fd (clk_k, w1, w2, w3, show_num, show_port);
+	format_disp fd (clk_k, w1, w2, w3, show_num, show_port, clear);
 
 	assign w1 = next1;
 	assign w2 = next2;
