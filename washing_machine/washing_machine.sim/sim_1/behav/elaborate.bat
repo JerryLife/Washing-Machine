@@ -1,6 +1,6 @@
 @echo off
 set xv_path=F:\\Xilinx\\Vivado\\2015.2\\bin
-call %xv_path%/xelab  -wto 4d4146b3d476428f946be567bfe1eb64 -m64 --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot main_sim_behav xil_defaultlib.main_sim xil_defaultlib.glbl -log elaborate.log
+call %xv_path%/xelab  -wto 4d4146b3d476428f946be567bfe1eb64 -m64 --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot countdown_sim_behav xil_defaultlib.countdown_sim xil_defaultlib.glbl -log elaborate.log
 if "%errorlevel%"=="0" goto SUCCESS
 if "%errorlevel%"=="1" goto END
 :END

@@ -11,6 +11,7 @@ INFO: [VRFC 10-2263] Analyzing Verilog file "D:/VerilogCode/washing_machine/wash
 INFO: [VRFC 10-311] analyzing module countdown_sim
 INFO: [VRFC 10-2263] Analyzing Verilog file "D:/VerilogCode/washing_machine/washing_machine.srcs/sim_1/new/main_sim.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module main_sim
+WARNING: [VRFC 10-2292] extra semicolon is not allowed here in this dialect. Use SystemVerilog mode [D:/VerilogCode/washing_machine/washing_machine.srcs/sim_1/new/main_sim.v:29]
 INFO: [VRFC 10-2263] Analyzing Verilog file "D:/VerilogCode/washing_machine/washing_machine.sim/sim_1/synth/func/glbl.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module glbl
 WARNING: [VRFC 10-1195] overwriting previous definition of module glbl [D:/VerilogCode/washing_machine/washing_machine.sim/sim_1/synth/func/glbl.v:6]

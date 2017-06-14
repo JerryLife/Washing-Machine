@@ -1,6 +1,6 @@
 webtalk_init -webtalk_dir D:/VerilogCode/washing_machine/washing_machine.hw/webtalk/
 webtalk_register_client -client project
-webtalk_add_data -client project -key date_generated -value "Tue Jun 13 14:32:23 2017" -context "software_version_and_target_device"
+webtalk_add_data -client project -key date_generated -value "Tue Jun 13 17:18:37 2017" -context "software_version_and_target_device"
 webtalk_add_data -client project -key product_version -value "Vivado v2015.2 (64-bit)" -context "software_version_and_target_device"
 webtalk_add_data -client project -key build_version -value "1266856" -context "software_version_and_target_device"
 webtalk_add_data -client project -key os_platform -value "WIN64" -context "software_version_and_target_device"
@@ -14,7 +14,7 @@ webtalk_add_data -client project -key target_package -value "not_applicable" -co
 webtalk_add_data -client project -key target_speed -value "not_applicable" -context "software_version_and_target_device"
 webtalk_add_data -client project -key random_id -value "8728c5db-648d-4e39-9dbf-5037a71db8cf" -context "software_version_and_target_device"
 webtalk_add_data -client project -key project_id -value "1dcdb59e-6410-4b1d-8cbc-1dc552aab001" -context "software_version_and_target_device"
-webtalk_add_data -client project -key project_iteration -value "8" -context "software_version_and_target_device"
+webtalk_add_data -client project -key project_iteration -value "9" -context "software_version_and_target_device"
 webtalk_add_data -client project -key os_name -value "Microsoft Windows 8 or later , 64-bit" -context "user_environment"
 webtalk_add_data -client project -key os_release -value "major release  (build 9200)" -context "user_environment"
 webtalk_add_data -client project -key cpu_name -value "Intel(R) Core(TM) i5-4258U CPU @ 2.40GHz" -context "user_environment"
@@ -24,6 +24,6 @@ webtalk_add_data -client project -key system_ram -value "8.000 GB" -context "use
 webtalk_register_client -client labtool
 webtalk_add_data -client labtool -key cable -value "Digilent/Nexys4DDR/15000000" -context "labtool\\usage"
 webtalk_add_data -client labtool -key chain -value "13631093" -context "labtool\\usage"
-webtalk_add_data -client labtool -key pgmcnt -value "05:00:00" -context "labtool\\usage"
-webtalk_transmit -clientid 2871523213 -regid "" -xml D:/VerilogCode/washing_machine/washing_machine.hw/webtalk/usage_statistics_ext_labtool.xml -html D:/VerilogCode/washing_machine/washing_machine.hw/webtalk/usage_statistics_ext_labtool.html -wdm D:/VerilogCode/washing_machine/washing_machine.hw/webtalk/usage_statistics_ext_labtool.wdm -intro "<H3>LABTOOL Usage Report</H3><BR>"
+webtalk_add_data -client labtool -key pgmcnt -value "03:00:00" -context "labtool\\usage"
+webtalk_transmit -clientid 2946785158 -regid "" -xml D:/VerilogCode/washing_machine/washing_machine.hw/webtalk/usage_statistics_ext_labtool.xml -html D:/VerilogCode/washing_machine/washing_machine.hw/webtalk/usage_statistics_ext_labtool.html -wdm D:/VerilogCode/washing_machine/washing_machine.hw/webtalk/usage_statistics_ext_labtool.wdm -intro "<H3>LABTOOL Usage Report</H3><BR>"
 webtalk_terminate

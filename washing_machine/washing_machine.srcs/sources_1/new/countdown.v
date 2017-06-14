@@ -32,17 +32,15 @@ module countdown(
 	output [6:0] show_num,
 	output [7:0] show_port,
     input clear
-	//debug
-	/*,output [7:0] w1,
-	output [7:0] w2,
-	output [7:0] w3,
-	output [1:0] zero,
-	output hold*/
+
+    //debug 
+    ,output w1,
+    output w2,
+    output w3
     );
 
 	reg [7:0] next1, next2;
 	wire [7:0] w1, w2, w3;
-	//reg next_hold, hold;
 	reg [1:0] zero;
 	reg [1:0] pause;
 	reg [1:0] time_up;
@@ -58,33 +56,23 @@ module countdown(
 
 	initial begin
 		time_up <= 0;
-		//zero <= 'b11;
 	end
 	
+	// if not reset, count the number 
 	always @(posedge clk) begin
-	 	//time_up = 'b00;
 		if (reset == 'b01) begin
 			next1 = num1;
-			//zero = 'b00;
 		end
 		else if (reset == 'b10) begin
 			next2 = num2;
-			//zero = 'b00;
 		end
 		else if (reset == 'b11) begin
 			next1 = num1;
 			next2 = num2;
-			//zero = 'b00;
 		end
 		else if (!hold_wire) begin
-			if (next1 == 0) begin
-				//time_up[0] <= 1;
-				//zero <= 'b11;
-			end 
-			else if (next2 == 0) begin
-				//time_up[1] <= 1;
-				//zero <= 'b11;
-			end 
+			if (next1 == 0) begin end 
+			else if (next2 == 0) begin end 
 			else begin
 				next1 <= next1 - 1;
 				next2 <= next2 - 1;
@@ -92,12 +80,14 @@ module countdown(
 		end
 	end
 
+	// calculate final_time_up
 	always @(negedge clk) begin
 		if ((!hold_wire) && reset == 'b00 && (next1 == 0 || next2 == 0))
 			pause <= 'b11;
 		else pause <= 'b00;
 	end
 
+	// get time_up when countdown finished
 	always @(posedge clk) begin
 		if ((!hold_wire) && reset == 'b00 && (next1 == 0 || next2 == 0)) begin
 			if (next1 == 0) begin

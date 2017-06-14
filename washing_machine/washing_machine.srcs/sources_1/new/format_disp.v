@@ -29,9 +29,6 @@ module format_disp(
 	output [7:0] show_port,
 	input clear
     );
-	
-	//debug
-	//reg [7:0] num3 = 32;
 
 	wire [3:0] n1, n2, n3, n4, n5, n6, n7, n8;
 	assign n1 = num1 / 10;

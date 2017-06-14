@@ -4,6 +4,7 @@
 
 set_param xicom.use_bs_reader 1
 debug::add_scope template.lib 1
+set_msg_config -id {Common-41} -limit 4294967295
 set_msg_config -id {HDL 9-1061} -limit 100000
 set_msg_config -id {HDL 9-1654} -limit 100000
 create_project -in_memory -part xc7a100tcsg324-1
@@ -22,7 +23,6 @@ read_verilog -library xil_defaultlib {
   D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/format_disp.v
   D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/countdown.v
   D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/main.v
-  D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/test.v
   D:/VerilogCode/washing_machine/washing_machine.srcs/sources_1/new/sel_mode.v
 }
 read_xdc D:/VerilogCode/washing_machine/washing_machine.srcs/Nexys4DDR_Master.xdc

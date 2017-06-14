@@ -1,7 +1,7 @@
 Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------
 | Tool Version      : Vivado v.2015.2 (win64) Build 1266856 Fri Jun 26 16:35:25 MDT 2015
-| Date              : Tue Jun 13 17:10:19 2017
+| Date              : Wed Jun 14 16:53:47 2017
 | Host              : DESKTOP-N4CAU2H running 64-bit major release  (build 9200)
 | Command           : report_clock_utilization -file main_clock_utilization_routed.rpt
 | Design            : main
@@ -50,7 +50,7 @@ Table of Contents
 +-------+----------------------------+-----------------------+------+-------+-------+
 |     1 | choose_mode_IBUF_BUFG_inst | choose_mode_IBUF_BUFG |    4 |     3 |    no |
 |     2 | cp_BUFG_inst               | cp_BUFG               |   28 |    14 |    no |
-|     3 | clk_IBUF_BUFG_inst         | clk_IBUF_BUFG         |   69 |    21 |    no |
+|     3 | clk_IBUF_BUFG_inst         | clk_IBUF_BUFG         |   69 |    20 |    no |
 +-------+----------------------------+-----------------------+------+-------+-------+
 
 
@@ -59,7 +59,7 @@ Table of Contents
 +-------+-----------------------+------------+--------------+------------------+------+-------+-------+
 | Index | Src of Rt-thru BUFHCE | Clk-Region | Site         | Net Name         | BELs | Sites | Fixed |
 +-------+-----------------------+------------+--------------+------------------+------+-------+-------+
-|     1 | choose_mode_IBUF_inst | X0Y1       | BUFHCE_X0Y12 | choose_mode_IBUF |    3 |     3 |   yes |
+|     1 | choose_mode_IBUF_inst | X0Y1       | BUFHCE_X0Y23 | choose_mode_IBUF |    3 |     3 |   yes |
 +-------+-----------------------+------------+--------------+------------------+------+-------+-------+
 
 
@@ -86,9 +86,9 @@ Table of Contents
 |     4 | hold_reg_i_2       | hold_reg_i_2_n_0       |    1 |     1 |    no |
 |     5 | mode_wash_reg_i_2  | mode_wash_reg_i_2_n_0  |    3 |     1 |    no |
 |     6 | washing_reg_i_2    | washing_reg_i_2_n_0    |    5 |     4 |    no |
-|     7 | recount_reg[1]_i_2 | recount_reg[1]_i_2_n_0 |    6 |     4 |    no |
-|     8 | num1_reg[5]_i_2    | num1_reg[5]_i_2_n_0    |    9 |     6 |    no |
-|     9 | power_on_reg_i_2   | power_on_reg_i_2_n_0   |   11 |     6 |    no |
+|     7 | recount_reg[1]_i_2 | recount_reg[1]_i_2_n_0 |    6 |     3 |    no |
+|     8 | num1_reg[5]_i_2    | num1_reg[5]_i_2_n_0    |    9 |     7 |    no |
+|     9 | power_on_reg_i_2   | power_on_reg_i_2_n_0   |   11 |     8 |    no |
 +-------+--------------------+------------------------+------+-------+-------+
 
 
@@ -102,9 +102,9 @@ Table of Contents
 +-------------------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+
 | X0Y0              |    0 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |    0 | 20800 |    0 |  2400 |    0 |    20 |    0 |    10 |    0 |    20 |
 | X1Y0              |    0 |    12 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     5 |    0 |     0 |    0 |     0 |    0 |     0 |    0 | 12000 |    0 |  2200 |    0 |    40 |    0 |    20 |    0 |    40 |
-| X0Y1              |    3 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |  136 | 16000 |    0 |  2400 |    0 |    20 |    0 |    10 |    0 |    20 |
+| X0Y1              |    3 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |  133 | 16000 |    0 |  2400 |    0 |    20 |    0 |    10 |    0 |    20 |
 | X1Y1              |    0 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |    0 | 15200 |    0 |  2600 |    0 |    60 |    0 |    30 |    0 |    40 |
-| X0Y2              |    1 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |    3 | 16000 |    0 |  2400 |    0 |    20 |    0 |    10 |    0 |    20 |
+| X0Y2              |    2 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |    6 | 16000 |    0 |  2400 |    0 |    20 |    0 |    10 |    0 |    20 |
 | X1Y2              |    0 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |    0 | 15200 |    0 |  2600 |    0 |    60 |    0 |    30 |    0 |    40 |
 | X0Y3              |    0 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |    0 | 20800 |    0 |  2400 |    0 |    20 |    0 |    10 |    0 |    20 |
 | X1Y3              |    0 |    12 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     5 |    0 |     1 |    0 |     0 |    0 |     0 |    0 | 10800 |    0 |  2000 |    0 |    30 |    0 |    15 |    0 |    40 |
@@ -119,7 +119,7 @@ Table of Contents
 | Source Type | BUFHCE Site  | Fixed | MMCM Pins | PLL Pins | GT Pins | BRAM Pins | ILOGICs | OLOGICs | FFs | LUTMs | DSP48E1s |     Clock Net Name    |
 +-------------+--------------+-------+-----------+----------+---------+-----------+---------+---------+-----+-------+----------+-----------------------+
 | BUFG        | BUFHCE_X0Y21 |   no  |         0 |        0 |       0 |         0 |       0 |       0 |   4 |     0 |        0 | choose_mode_IBUF_BUFG |
-| BUFG        | BUFHCE_X0Y20 |   no  |         0 |        0 |       0 |         0 |       0 |       0 |  28 |     0 |        0 | cp_BUFG               |
+| BUFG        | BUFHCE_X0Y20 |   no  |         0 |        0 |       0 |         0 |       0 |       0 |  26 |     0 |        0 | cp_BUFG               |
 | BUFG        | BUFHCE_X0Y22 |   no  |         0 |        0 |       0 |         0 |       0 |       0 |  66 |     0 |        0 | clk_IBUF_BUFG         |
 +-------------+--------------+-------+-----------+----------+---------+-----------+---------+---------+-----+-------+----------+-----------------------+
 
@@ -130,7 +130,8 @@ Table of Contents
 +-------------+--------------+-------+-----------+----------+---------+-----------+---------+---------+-----+-------+----------+----------------+
 | Source Type | BUFHCE Site  | Fixed | MMCM Pins | PLL Pins | GT Pins | BRAM Pins | ILOGICs | OLOGICs | FFs | LUTMs | DSP48E1s | Clock Net Name |
 +-------------+--------------+-------+-----------+----------+---------+-----------+---------+---------+-----+-------+----------+----------------+
-| BUFG        | BUFHCE_X0Y32 |   no  |         0 |        0 |       0 |         0 |       0 |       0 |   3 |     0 |        0 | clk_IBUF_BUFG  |
+| BUFG        | BUFHCE_X0Y32 |   no  |         0 |        0 |       0 |         0 |       0 |       0 |   2 |     0 |        0 | cp_BUFG        |
+| BUFG        | BUFHCE_X0Y33 |   no  |         0 |        0 |       0 |         0 |       0 |       0 |   3 |     0 |        0 | clk_IBUF_BUFG  |
 +-------------+--------------+-------+-----------+----------+---------+-----------+---------+---------+-----+-------+----------+----------------+
 
 
@@ -183,66 +184,66 @@ resize_pblock [get_pblocks {CLKAG_clk_IBUF_BUFG}] -add {CLOCKREGION_X0Y1:CLOCKRE
 #startgroup
 create_pblock {CLKAG_cp_BUFG}
 add_cells_to_pblock [get_pblocks  {CLKAG_cp_BUFG}] [get_cells -filter { PRIMITIVE_GROUP != I/O && IS_PRIMITIVE==1 && PRIMITIVE_LEVEL !=INTERNAL } -of_object [get_pins -filter {DIRECTION==IN} -of_objects [get_nets -hierarchical -filter {PARENT=="cp_BUFG"}]]]
-resize_pblock [get_pblocks {CLKAG_cp_BUFG}] -add {CLOCKREGION_X0Y1:CLOCKREGION_X0Y1}
+resize_pblock [get_pblocks {CLKAG_cp_BUFG}] -add {CLOCKREGION_X0Y1:CLOCKREGION_X0Y1 CLOCKREGION_X0Y2:CLOCKREGION_X0Y2}
 #endgroup
 
-# Clock net "end_reset_reg_i_2_n_0" driven by instance "end_reset_reg_i_2" located at site "SLICE_X43Y97"
+# Clock net "end_reset_reg_i_2_n_0" driven by instance "end_reset_reg_i_2" located at site "SLICE_X46Y97"
 #startgroup
 create_pblock {CLKAG_end_reset_reg_i_2_n_0}
 add_cells_to_pblock [get_pblocks  {CLKAG_end_reset_reg_i_2_n_0}] [get_cells -filter { PRIMITIVE_GROUP != I/O && IS_PRIMITIVE==1 && PRIMITIVE_LEVEL !=INTERNAL } -of_object [get_pins -filter {DIRECTION==IN} -of_objects [get_nets -hierarchical -filter {PARENT=="end_reset_reg_i_2_n_0"}]]]
 resize_pblock [get_pblocks {CLKAG_end_reset_reg_i_2_n_0}] -add {CLOCKREGION_X0Y1:CLOCKREGION_X0Y1}
 #endgroup
 
-# Clock net "ending_reg_i_2_n_0" driven by instance "ending_reg_i_2" located at site "SLICE_X41Y98"
+# Clock net "ending_reg_i_2_n_0" driven by instance "ending_reg_i_2" located at site "SLICE_X44Y97"
 #startgroup
 create_pblock {CLKAG_ending_reg_i_2_n_0}
 add_cells_to_pblock [get_pblocks  {CLKAG_ending_reg_i_2_n_0}] [get_cells -filter { PRIMITIVE_GROUP != I/O && IS_PRIMITIVE==1 && PRIMITIVE_LEVEL !=INTERNAL } -of_object [get_pins -filter {DIRECTION==IN} -of_objects [get_nets -hierarchical -filter {PARENT=="ending_reg_i_2_n_0"}]]]
 resize_pblock [get_pblocks {CLKAG_ending_reg_i_2_n_0}] -add {CLOCKREGION_X0Y1:CLOCKREGION_X0Y1}
 #endgroup
 
-# Clock net "flag_reset_reg_i_1_n_0" driven by instance "flag_reset_reg_i_1" located at site "SLICE_X38Y97"
+# Clock net "flag_reset_reg_i_1_n_0" driven by instance "flag_reset_reg_i_1" located at site "SLICE_X43Y95"
 #startgroup
 create_pblock {CLKAG_flag_reset_reg_i_1_n_0}
 add_cells_to_pblock [get_pblocks  {CLKAG_flag_reset_reg_i_1_n_0}] [get_cells -filter { PRIMITIVE_GROUP != I/O && IS_PRIMITIVE==1 && PRIMITIVE_LEVEL !=INTERNAL } -of_object [get_pins -filter {DIRECTION==IN} -of_objects [get_nets -hierarchical -filter {PARENT=="flag_reset_reg_i_1_n_0"}]]]
 resize_pblock [get_pblocks {CLKAG_flag_reset_reg_i_1_n_0}] -add {CLOCKREGION_X0Y1:CLOCKREGION_X0Y1}
 #endgroup
 
-# Clock net "hold_reg_i_2_n_0" driven by instance "hold_reg_i_2" located at site "SLICE_X39Y95"
+# Clock net "hold_reg_i_2_n_0" driven by instance "hold_reg_i_2" located at site "SLICE_X38Y99"
 #startgroup
 create_pblock {CLKAG_hold_reg_i_2_n_0}
 add_cells_to_pblock [get_pblocks  {CLKAG_hold_reg_i_2_n_0}] [get_cells -filter { PRIMITIVE_GROUP != I/O && IS_PRIMITIVE==1 && PRIMITIVE_LEVEL !=INTERNAL } -of_object [get_pins -filter {DIRECTION==IN} -of_objects [get_nets -hierarchical -filter {PARENT=="hold_reg_i_2_n_0"}]]]
 resize_pblock [get_pblocks {CLKAG_hold_reg_i_2_n_0}] -add {CLOCKREGION_X0Y1:CLOCKREGION_X0Y1}
 #endgroup
 
-# Clock net "mode_wash_reg_i_2_n_0" driven by instance "mode_wash_reg_i_2" located at site "SLICE_X39Y95"
+# Clock net "mode_wash_reg_i_2_n_0" driven by instance "mode_wash_reg_i_2" located at site "SLICE_X44Y97"
 #startgroup
 create_pblock {CLKAG_mode_wash_reg_i_2_n_0}
 add_cells_to_pblock [get_pblocks  {CLKAG_mode_wash_reg_i_2_n_0}] [get_cells -filter { PRIMITIVE_GROUP != I/O && IS_PRIMITIVE==1 && PRIMITIVE_LEVEL !=INTERNAL } -of_object [get_pins -filter {DIRECTION==IN} -of_objects [get_nets -hierarchical -filter {PARENT=="mode_wash_reg_i_2_n_0"}]]]
 resize_pblock [get_pblocks {CLKAG_mode_wash_reg_i_2_n_0}] -add {CLOCKREGION_X0Y1:CLOCKREGION_X0Y1}
 #endgroup
 
-# Clock net "num1_reg[5]_i_2_n_0" driven by instance "num1_reg[5]_i_2" located at site "SLICE_X39Y95"
+# Clock net "num1_reg[5]_i_2_n_0" driven by instance "num1_reg[5]_i_2" located at site "SLICE_X44Y99"
 #startgroup
 create_pblock {CLKAG_num1_reg[5]_i_2_n_0}
 add_cells_to_pblock [get_pblocks  {CLKAG_num1_reg[5]_i_2_n_0}] [get_cells -filter { PRIMITIVE_GROUP != I/O && IS_PRIMITIVE==1 && PRIMITIVE_LEVEL !=INTERNAL } -of_object [get_pins -filter {DIRECTION==IN} -of_objects [get_nets -hierarchical -filter {PARENT=="num1_reg[5]_i_2_n_0"}]]]
 resize_pblock [get_pblocks {CLKAG_num1_reg[5]_i_2_n_0}] -add {CLOCKREGION_X0Y1:CLOCKREGION_X0Y1}
 #endgroup
 
-# Clock net "power_on_reg_i_2_n_0" driven by instance "power_on_reg_i_2" located at site "SLICE_X38Y97"
+# Clock net "power_on_reg_i_2_n_0" driven by instance "power_on_reg_i_2" located at site "SLICE_X43Y95"
 #startgroup
 create_pblock {CLKAG_power_on_reg_i_2_n_0}
 add_cells_to_pblock [get_pblocks  {CLKAG_power_on_reg_i_2_n_0}] [get_cells -filter { PRIMITIVE_GROUP != I/O && IS_PRIMITIVE==1 && PRIMITIVE_LEVEL !=INTERNAL } -of_object [get_pins -filter {DIRECTION==IN} -of_objects [get_nets -hierarchical -filter {PARENT=="power_on_reg_i_2_n_0"}]]]
 resize_pblock [get_pblocks {CLKAG_power_on_reg_i_2_n_0}] -add {CLOCKREGION_X0Y1:CLOCKREGION_X0Y1}
 #endgroup
 
-# Clock net "recount_reg[1]_i_2_n_0" driven by instance "recount_reg[1]_i_2" located at site "SLICE_X38Y94"
+# Clock net "recount_reg[1]_i_2_n_0" driven by instance "recount_reg[1]_i_2" located at site "SLICE_X38Y99"
 #startgroup
 create_pblock {CLKAG_recount_reg[1]_i_2_n_0}
 add_cells_to_pblock [get_pblocks  {CLKAG_recount_reg[1]_i_2_n_0}] [get_cells -filter { PRIMITIVE_GROUP != I/O && IS_PRIMITIVE==1 && PRIMITIVE_LEVEL !=INTERNAL } -of_object [get_pins -filter {DIRECTION==IN} -of_objects [get_nets -hierarchical -filter {PARENT=="recount_reg[1]_i_2_n_0"}]]]
-resize_pblock [get_pblocks {CLKAG_recount_reg[1]_i_2_n_0}] -add {CLOCKREGION_X0Y1:CLOCKREGION_X0Y1}
+resize_pblock [get_pblocks {CLKAG_recount_reg[1]_i_2_n_0}] -add {CLOCKREGION_X0Y1:CLOCKREGION_X0Y1 CLOCKREGION_X0Y2:CLOCKREGION_X0Y2}
 #endgroup
 
-# Clock net "washing_reg_i_2_n_0" driven by instance "washing_reg_i_2" located at site "SLICE_X38Y92"
+# Clock net "washing_reg_i_2_n_0" driven by instance "washing_reg_i_2" located at site "SLICE_X38Y94"
 #startgroup
 create_pblock {CLKAG_washing_reg_i_2_n_0}
 add_cells_to_pblock [get_pblocks  {CLKAG_washing_reg_i_2_n_0}] [get_cells -filter { PRIMITIVE_GROUP != I/O && IS_PRIMITIVE==1 && PRIMITIVE_LEVEL !=INTERNAL } -of_object [get_pins -filter {DIRECTION==IN} -of_objects [get_nets -hierarchical -filter {PARENT=="washing_reg_i_2_n_0"}]]]

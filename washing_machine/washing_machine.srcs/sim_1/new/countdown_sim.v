@@ -30,10 +30,13 @@ module countdown_sim();
 	wire [1:0] time_up;
 	wire [6:0] show_num;
 	wire [7:0] show_port;
-	wire hold;
+	wire cp;
+	reg clear;
 
-	countdown cd1 (clk, reset, hold_wire, num1, num2, num3, time_up,
-	 show_num, show_port, w1, w2, w3, zero, hold);
+	divider d (clk, cp);
+
+	countdown cd1 (clk, cp, reset, hold_wire, num1, num2, num3, time_up,
+	 show_num, show_port, clear, w1, w2, w3);
 
 	always #1 clk = ~clk;
 
@@ -44,8 +47,9 @@ module countdown_sim();
 		clk = 0;
 		reset = 'b10;
 		hold_wire = 0;
+		clear = 0;
+		#1000 reset = 'b11;
 		#1000 reset = 'b00;
 		#1000 reset = 'b01;
-		#1000 reset = 'b11;
 	end
 endmodule

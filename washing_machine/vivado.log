@@ -119,3 +119,5 @@ WARNING: [Labtools 27-3123] The debug hub core was not detected at User Scan Cha
 Resolution: 
 1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active OR
 2. Manually launch hw_server with -e "set xsdb-user-bscan <C_USER_SCAN_CHAIN scan_chain_number>" to detect the debug hub at User Scan Chain of 2 or 4. To determine the user scan chain setting, open the implemented design and use: get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub].
+exit
+INFO: [Common 17-206] Exiting Vivado at Tue Jun 13 17:18:40 2017...

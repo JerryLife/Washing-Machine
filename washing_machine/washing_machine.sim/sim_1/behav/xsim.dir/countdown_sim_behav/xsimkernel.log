@@ -1,0 +1,4 @@
+Running: xsim.dir/countdown_sim_behav/xsimk.exe -simmode gui -wdb countdown_sim_behav.wdb -simrunnum 0 -socket 4128
+Design successfully loaded
+Design Loading Memory Usage: 22324 KB (Peak: 22324 KB)
+Design Loading CPU Usage: 218 ms

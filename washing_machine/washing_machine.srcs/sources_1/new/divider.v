@@ -21,8 +21,8 @@
 
 
 module divider(clk, clk_N);
-    input clk;                                   
-    output reg clk_N;                                   
+    input clk;  
+    output reg clk_N;
     parameter dely500us = 50_000_000; 
     //debug
     //parameter dely500us = 8;           
